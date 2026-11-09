@@ -929,7 +929,7 @@
             <div class="mt-5 text-left">
                 <label for="qr-link-input" class="block text-[11px] font-bold text-slate-600 mb-1">Enlace a compartir</label>
                 <div class="flex gap-2">
-                    <input id="qr-link-input" type="url" value="http://192.168.100.22:8000/adoptamatch_innovaci_n_en_adopci_n_responsable%20(6).html" placeholder="https://tu-sitio.com" class="flex-1 min-w-0 px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:ring-2 focus:ring-brand-500 outline-none" onkeydown="if(event.key==='Enter'){event.preventDefault();updateQrCode();}">
+                    <input id="qr-link-input" type="url" value="https://tareascatitta-spec.github.io/adoptamatch/" placeholder="https://tu-sitio.com" class="flex-1 min-w-0 px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:ring-2 focus:ring-brand-500 outline-none" onkeydown="if(event.key==='Enter'){event.preventDefault();updateQrCode();}">
                     <button onclick="updateQrCode()" class="px-3.5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition-all" title="Regenerar QR" aria-label="Regenerar QR">
                         <i class="fa-solid fa-rotate"></i>
                     </button>
@@ -2113,14 +2113,14 @@
         }
 
         // ================= COMPARTIR CON CÓDIGO QR =================
-        // 🔗 Dirección de respaldo: se usa si la página se abre como archivo local o en localhost.
-        //    Es la IP de tu PC en la red Wi-Fi (cámbiala si tu IP cambia).
-        const QR_LAN_URL = "http://192.168.100.22:8000/adoptamatch_innovaci_n_en_adopci_n_responsable%20(6).html";
+        // 🔗 URL pública de respaldo: se usa si la página se abre como archivo local o en localhost.
+        //    Así el QR siempre lleva a la página publicada, incluso mientras editas con Live Server.
+        const QR_PUBLIC_URL = "https://tareascatitta-spec.github.io/adoptamatch/";
 
-        // Si la página se abre desde otra IP o dominio, el QR apunta automáticamente a esa misma URL.
+        // Si la página se abre desde otro dominio, el QR apunta automáticamente a esa misma URL.
         function getDefaultQrUrl() {
             const isLocalHost = ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
-            if (window.location.protocol === 'file:' || isLocalHost) return QR_LAN_URL;
+            if (window.location.protocol === 'file:' || isLocalHost) return QR_PUBLIC_URL;
             return window.location.href;
         }
 
