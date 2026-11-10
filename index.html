@@ -89,6 +89,13 @@
               Carnet Vet
             </button>
             <button
+              onclick="switchTab('financiamiento')"
+              class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              id="nav-financiamiento"
+            >
+              Financiamiento
+            </button>
+            <button
               onclick="switchTab('educacion')"
               class="nav-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
               id="nav-educacion"
@@ -170,6 +177,12 @@
           class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600"
         >
           Registro Veterinario
+        </button>
+        <button
+          onclick="switchTab('financiamiento')"
+          class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600"
+        >
+          Financiamiento & Alianzas
         </button>
         <button
           onclick="switchTab('educacion')"
@@ -990,6 +1003,251 @@
                   <!-- Populated dynamically -->
                 </tbody>
               </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= FINANCIAMIENTO VIEW ================= -->
+      <section
+        id="view-financiamiento"
+        class="tab-content hidden py-12 bg-slate-50"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <!-- Header -->
+          <div class="text-center max-w-3xl mx-auto">
+            <span
+              class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-bold uppercase tracking-wider"
+              >Sostenibilidad & Red Comercial</span
+            >
+            <h2 class="text-3xl font-extrabold text-slate-900 mt-2">
+              Financiamiento y Alianzas Estratégicas
+            </h2>
+            <p class="text-slate-500 text-sm mt-2">
+              Un modelo colaborativo donde clínicas, tiendas y marcas financian
+              el rescate, la esterilización y la adopción responsable.
+            </p>
+          </div>
+
+          <!-- Aliados -->
+          <div class="grid md:grid-cols-3 gap-6">
+            <!-- Red de Veterinarias -->
+            <div
+              class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm flex flex-col"
+            >
+              <div
+                class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center text-xl"
+              >
+                <i class="fa-solid fa-user-doctor"></i>
+              </div>
+              <h3 class="font-bold text-slate-900 text-lg mt-4">
+                Red de Veterinarias
+              </h3>
+              <p class="text-xs text-slate-500 mt-2">
+                Clínicas locales que entregan atención preventiva a precio
+                preferente a las familias que adoptan.
+              </p>
+
+              <ul class="mt-4 space-y-2 text-xs text-slate-600">
+                <li class="flex items-center justify-between gap-2">
+                  <span>Vacunación</span>
+                  <span class="font-bold text-teal-700">15% - 30% dcto.</span>
+                </li>
+                <li
+                  class="flex items-center justify-between gap-2 border-t border-slate-100 pt-2"
+                >
+                  <span>Esterilización</span>
+                  <span class="font-bold text-teal-700">15% - 30% dcto.</span>
+                </li>
+                <li
+                  class="flex items-center justify-between gap-2 border-t border-slate-100 pt-2"
+                >
+                  <span>Microchip</span>
+                  <span class="font-bold text-teal-700">15% - 30% dcto.</span>
+                </li>
+              </ul>
+
+              <div class="mt-auto pt-5">
+                <span
+                  class="inline-block px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-[11px] font-bold"
+                  >12 Clínicas Adheridas</span
+                >
+                <button
+                  type="button"
+                  class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-teal-200 text-teal-700 text-xs font-bold hover:bg-teal-50 transition-all"
+                >
+                  Sumar Clínica <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Tiendas de Mascotas -->
+            <div
+              class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm flex flex-col"
+            >
+              <div
+                class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl"
+              >
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <h3 class="font-bold text-slate-900 text-lg mt-4">
+                Tiendas de Mascotas
+              </h3>
+              <p class="text-xs text-slate-500 mt-2">
+                Pet shops que entregan un kit de bienvenida a cada familia que
+                adopta, reduciendo el costo del primer mes.
+              </p>
+
+              <ul class="mt-4 space-y-2 text-xs text-slate-600">
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-brand-500"></i>
+                  <span>Alimento de muestra</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-brand-500"></i>
+                  <span>Juguete y accesorios básicos</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-brand-500"></i>
+                  <span>Cupón de descuento en tienda</span>
+                </li>
+              </ul>
+
+              <div class="mt-auto pt-5">
+                <span
+                  class="inline-block px-3 py-1 bg-brand-50 text-brand-700 rounded-full text-[11px] font-bold"
+                  >8 Pet Shops Aliados</span
+                >
+                <button
+                  type="button"
+                  class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-brand-500/40 text-brand-700 text-xs font-bold hover:bg-brand-50 transition-all"
+                >
+                  Sumar Tienda <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Marcas Patrocinadoras -->
+            <div
+              class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm flex flex-col"
+            >
+              <div
+                class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl"
+              >
+                <i class="fa-solid fa-handshake"></i>
+              </div>
+              <h3 class="font-bold text-slate-900 text-lg mt-4">
+                Marcas Patrocinadoras
+              </h3>
+              <p class="text-xs text-slate-500 mt-2">
+                Empresas que financian operativos y campañas, asociando su marca
+                a una causa ética y verificable.
+              </p>
+
+              <ul class="mt-4 space-y-2 text-xs text-slate-600">
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-purple-500"></i>
+                  <span>Operativos de esterilización</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-purple-500"></i>
+                  <span>Campañas de tenencia responsable</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-purple-500"></i>
+                  <span>Reportes de impacto y visibilidad</span>
+                </li>
+              </ul>
+
+              <div class="mt-auto pt-5">
+                <span
+                  class="inline-block px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-[11px] font-bold"
+                  >Marcas Partner</span
+                >
+                <button
+                  type="button"
+                  class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-purple-200 text-purple-700 text-xs font-bold hover:bg-purple-50 transition-all"
+                >
+                  Ser Patrocinador <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sustentabilidad Financiera -->
+          <div
+            class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm"
+          >
+            <div class="max-w-3xl">
+              <h3 class="text-xl font-extrabold text-slate-900">
+                Estructura de Sustentabilidad Financiera
+              </h3>
+              <p class="text-slate-500 text-sm mt-1">
+                Cuatro fuentes complementarias que cubren los gastos operativos
+                sin depender de una sola fuente de ingreso.
+              </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+              <div class="border-t-4 border-teal-400 pt-4">
+                <div
+                  class="w-8 h-8 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center text-xs font-extrabold"
+                >
+                  1
+                </div>
+                <h4 class="font-bold text-slate-900 text-sm mt-3">
+                  Micro-Aportes
+                </h4>
+                <p class="text-xs text-slate-500 mt-1">
+                  Donaciones pequeñas y recurrentes de la comunidad para cubrir
+                  gastos operativos.
+                </p>
+              </div>
+
+              <div class="border-t-4 border-brand-500 pt-4">
+                <div
+                  class="w-8 h-8 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center text-xs font-extrabold"
+                >
+                  2
+                </div>
+                <h4 class="font-bold text-slate-900 text-sm mt-3">
+                  Comisiones por Servicios
+                </h4>
+                <p class="text-xs text-slate-500 mt-1">
+                  Un porcentaje de los servicios de la red aliada financia el
+                  rescate y el cuidado.
+                </p>
+              </div>
+
+              <div class="border-t-4 border-amber-400 pt-4">
+                <div
+                  class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-extrabold"
+                >
+                  3
+                </div>
+                <h4 class="font-bold text-slate-900 text-sm mt-3">
+                  Convenios Municipales
+                </h4>
+                <p class="text-xs text-slate-500 mt-1">
+                  Aportes de municipios por campañas de tenencia responsable y
+                  esterilización.
+                </p>
+              </div>
+
+              <div class="border-t-4 border-purple-400 pt-4">
+                <div
+                  class="w-8 h-8 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-xs font-extrabold"
+                >
+                  4
+                </div>
+                <h4 class="font-bold text-slate-900 text-sm mt-3">
+                  Patrocinio de Marcas
+                </h4>
+                <p class="text-xs text-slate-500 mt-1">
+                  Empresas que financian operativos a cambio de visibilidad
+                  ética y reportes de impacto.
+                </p>
+              </div>
             </div>
           </div>
         </div>
