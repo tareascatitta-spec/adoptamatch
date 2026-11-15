@@ -773,42 +773,45 @@ function renderRealCases() {
   grid.innerHTML = filtered
     .map(
       (c) => `
-                <div class="bg-white rounded-3xl overflow-hidden border ${c.urgent ? "border-rose-200 ring-2 ring-rose-500/10" : "border-slate-100"} shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
-                    <div>
-                        <div class="relative h-60 overflow-hidden bg-slate-200">
-                            <img src="${c.image}" alt="${c.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                                ${c.urgent ? `<span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-rose-600 text-white shadow-md">Urgente</span>` : `<span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-teal-600 text-white shadow-md">En Adopción</span>`}
-                                <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-slate-900/75 text-white backdrop-blur">
-                                    <i class="fa-solid fa-location-dot mr-1 text-rose-400"></i>${c.location}
-                                </span>
-                            </div>
-                            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur text-[10px] font-bold text-slate-700">
-                                ${c.daysWaiting} días esperando hogar
+                <article class="surface surface-hover group flex flex-col overflow-hidden ${c.urgent ? "ring-1 ring-rose-200" : ""}">
+                    <div class="media-frame">
+                        <img src="${c.image}" alt="${c.name}, caso real en adopción" loading="lazy" decoding="async">
+                        <div class="absolute inset-x-3 top-3 flex flex-wrap gap-1.5">
+                            ${
+                              c.urgent
+                                ? `<span class="chip bg-rose-600 text-white shadow-sm">Urgente</span>`
+                                : `<span class="chip bg-teal-600 text-white shadow-sm">En adopción</span>`
+                            }
+                            <span class="chip bg-slate-900/75 text-white backdrop-blur">
+                                <i class="fa-solid fa-location-dot text-rose-300"></i>${c.location}
                             </span>
                         </div>
-
-                        <div class="p-6 space-y-3">
-                            <div>
-                                <span class="text-[10px] font-extrabold uppercase tracking-wider text-teal-600">${c.rescuer}</span>
-                                <h3 class="text-2xl font-black text-slate-900">${c.name}</h3>
-                                <p class="text-xs font-semibold text-slate-400">${c.meta}</p>
-                            </div>
-
-                            <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">${c.story}</p>
-
-                            <div class="pt-2 flex flex-wrap gap-2 text-[11px]">
-                                <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 font-semibold"><i class="fa-solid fa-shield-heart mr-1"></i>${c.health}</span>
-                            </div>
-                        </div>
+                        <span class="absolute bottom-3 right-3 chip bg-white/95 text-slate-700 shadow-sm">
+                            <i class="fa-regular fa-clock"></i>${c.daysWaiting} días esperando
+                        </span>
                     </div>
 
-                    <div class="px-6 pb-6 pt-2">
-                        <button onclick="openRealCaseModal(${c.id})" class="w-full py-3.5 rounded-2xl ${c.urgent ? "bg-rose-600 hover:bg-rose-700 shadow-rose-500/20" : "bg-slate-900 hover:bg-slate-800"} text-white font-extrabold text-xs shadow-lg transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-up-right-from-square"></i>Abrir Ventana de Adopción
+                    <div class="flex flex-1 flex-col gap-3 p-5">
+                        <div>
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-teal-600">${c.rescuer}</span>
+                            <h3 class="text-xl font-black text-slate-900 leading-tight">${c.name}</h3>
+                            <p class="text-[11px] font-semibold text-slate-500">${c.meta}</p>
+                        </div>
+
+                        <p class="text-xs leading-relaxed text-slate-600 line-clamp-2">${c.story}</p>
+
+                        <div class="rounded-xl border border-emerald-100 bg-emerald-50/70 p-2.5">
+                            <span class="block text-[10px] font-extrabold uppercase tracking-wide text-emerald-800">
+                                <i class="fa-solid fa-file-medical"></i> Ficha clínica
+                            </span>
+                            <p class="mt-0.5 text-[11px] font-medium leading-snug text-slate-700 line-clamp-2">${c.health}</p>
+                        </div>
+
+                        <button onclick="openRealCaseModal(${c.id})" class="btn btn-md mt-auto w-full btn-emerald">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>Consultar por ${c.name} (QR)
                         </button>
                     </div>
-                </div>
+                </article>
             `,
     )
     .join("");
@@ -817,14 +820,10 @@ function renderRealCases() {
 function filterRealCases(filter) {
   currentRealCaseFilter = filter;
   document.querySelectorAll(".rc-filter-btn").forEach((btn) => {
-    btn.classList.remove("bg-rose-600", "text-white");
-    btn.classList.add("bg-slate-100", "text-slate-600");
+    const isActive = btn.id === `rc-filter-${filter}`;
+    btn.classList.toggle("is-active", isActive);
+    btn.setAttribute("aria-pressed", String(isActive));
   });
-  const active = document.getElementById(`rc-filter-${filter}`);
-  if (active) {
-    active.classList.add("bg-rose-600", "text-white");
-    active.classList.remove("bg-slate-100", "text-slate-600");
-  }
   renderRealCases();
 }
 
@@ -834,6 +833,8 @@ function openRealCaseModal(id) {
 
   document.getElementById("rc-modal-img").src = c.image;
   document.getElementById("rc-modal-name").textContent = c.name;
+  const nameInline = document.getElementById("rc-modal-name-inline");
+  if (nameInline) nameInline.textContent = c.name;
   document.getElementById("rc-modal-meta").textContent = c.meta;
   document.getElementById("rc-modal-rescuer").textContent =
     `Rescatado por: ${c.rescuer}`;
@@ -857,12 +858,13 @@ function closeRealCaseModal() {
 function submitRealCaseAdoption(e) {
   e.preventDefault();
   const petName = document.getElementById("rc-modal-name").textContent;
-  const adopter = document.getElementById("rc-adopter-name").value;
+  const adopter = document.getElementById("rc-adopter-name").value.trim();
+  const phone = document.getElementById("rc-adopter-phone").value.trim();
   closeRealCaseModal();
   e.target.reset();
   showToast(
-    "Postulación Enviada",
-    `Hola ${adopter}, tu solicitud para adoptar a ${petName} fue enviada directamente a su rescatista.`,
+    "Postulación enviada",
+    `Hola ${adopter}, tu solicitud para adoptar a ${petName} fue enviada a su rescatista. Te contactarán al ${phone}.`,
   );
 }
 
@@ -915,7 +917,23 @@ document.addEventListener("DOMContentLoaded", () => {
   updateVetCard();
   renderArticles();
   loadMythQuestion();
+
+  // Enlaces profundos: /#casos-reales abre esa vista directamente.
+  const initialTab = window.location.hash.replace("#", "");
+  if (initialTab && document.getElementById(`view-${initialTab}`)) {
+    switchTab(initialTab, { skipHash: true, skipScroll: true });
+  } else {
+    switchTab("inicio", { skipHash: true, skipScroll: true });
+  }
 });
+
+function resetPetsFilters() {
+  ["filter-type", "filter-size", "filter-age"].forEach((id) => {
+    const select = document.getElementById(id);
+    if (select) select.value = "all";
+  });
+  renderPets();
+}
 
 // CALCULATOR LOGIC
 function calculateFoodPortion(e) {
@@ -1046,8 +1064,8 @@ function closeArticleModal() {
   document.getElementById("article-modal").classList.add("hidden");
 }
 
-function populateVetPetSelect() {
-  const select = document.getElementById("vet-pet-select");
+function populatePetSelect(selectId) {
+  const select = document.getElementById(selectId);
   if (!select) return;
   select.innerHTML = PETS_DATA.map(
     (pet) => `
@@ -1056,14 +1074,12 @@ function populateVetPetSelect() {
   ).join("");
 }
 
+function populateVetPetSelect() {
+  populatePetSelect("vet-pet-select");
+}
+
 function populateSponsorPetSelect() {
-  const select = document.getElementById("sponsor-pet-select");
-  if (!select) return;
-  select.innerHTML = PETS_DATA.map(
-    (pet) => `
-                <option value="${pet.id}">${pet.name} (${pet.type === "perro" ? "Perro" : "Gato"}) - ${pet.ageText}</option>
-            `,
-  ).join("");
+  populatePetSelect("sponsor-pet-select");
 }
 
 function onVetPetChange() {
@@ -1085,11 +1101,17 @@ function renderPets() {
     return true;
   });
 
+  const counter = document.getElementById("pets-counter");
+  if (counter) {
+    counter.textContent = `${filteredPets.length} de ${PETS_DATA.length} mascotas`;
+  }
+
   if (filteredPets.length === 0) {
     grid.innerHTML = `
-                    <div class="col-span-full py-12 text-center text-slate-400">
-                        <i class="fa-solid fa-paw text-4xl mb-2 text-slate-300"></i>
-                        <p class="font-medium">No se encontraron mascotas con los filtros seleccionados.</p>
+                    <div class="col-span-full surface-muted py-14 text-center text-slate-400">
+                        <i class="fa-solid fa-paw text-4xl mb-3 text-slate-300"></i>
+                        <p class="font-semibold text-sm">No se encontraron mascotas con los filtros seleccionados.</p>
+                        <p class="text-xs mt-1">Prueba con otra especie, tamaño o edad.</p>
                     </div>
                 `;
     return;
@@ -1098,49 +1120,44 @@ function renderPets() {
   grid.innerHTML = filteredPets
     .map(
       (pet) => `
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                    <div>
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="${pet.image}" alt="${pet.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur rounded-full text-xs font-bold ${pet.type === "perro" ? "text-brand-600" : "text-teal-600"} shadow-sm">
-                                ${pet.type === "perro" ? "Perro" : "Gato"}
+                <article class="surface surface-hover group flex flex-col overflow-hidden">
+                    <div class="media-frame">
+                        <img src="${pet.image}" alt="${pet.name}, ${pet.type} en adopción" loading="lazy" decoding="async">
+                        <div class="absolute inset-x-3 top-3 flex items-start justify-between gap-2">
+                            <span class="chip bg-white/95 text-${pet.type === "perro" ? "brand-700" : "teal-700"} shadow-sm backdrop-blur">
+                                <i class="fa-solid ${pet.type === "perro" ? "fa-dog" : "fa-cat"}"></i>${pet.type === "perro" ? "Perro" : "Gato"}
                             </span>
-                            <span class="absolute top-3 right-3 px-2.5 py-1 bg-slate-900/80 backdrop-blur text-white rounded-lg text-[10px] font-semibold uppercase">
-                                ${pet.size}
-                            </span>
+                            <span class="chip bg-slate-900/80 text-white backdrop-blur uppercase">${pet.size}</span>
                         </div>
-
-                        <div class="p-5">
-                            <div class="flex items-center justify-between">
-                                <h3 class="text-xl font-extrabold text-slate-900">${pet.name}</h3>
-                                <span class="text-xs font-semibold text-slate-400">${pet.ageText}</span>
-                            </div>
-
-                            <p class="text-xs text-slate-500 mt-2 line-clamp-2">${pet.description}</p>
-
-                            <div class="mt-3 flex flex-wrap gap-1.5">
-                                ${pet.personality.map((p) => `<span class="px-2 py-0.5 bg-slate-100 text-slate-600 rounded-md text-[10px] font-semibold">${p}</span>`).join("")}
-                            </div>
+                        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/85 via-slate-900/35 to-transparent p-4 pt-10">
+                            <h3 class="text-lg font-black leading-tight text-white">${pet.name}</h3>
+                            <p class="text-[11px] font-semibold text-white/80">${pet.ageText} · ${pet.gender}</p>
                         </div>
                     </div>
 
-                    <div class="px-5 pb-5 pt-0">
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                    <div class="flex flex-1 flex-col gap-3 p-5">
+                        <p class="text-xs leading-relaxed text-slate-600 line-clamp-2">${pet.description}</p>
+
+                        <div class="flex flex-wrap gap-1.5">
+                            ${pet.personality.map((p) => `<span class="chip">${p}</span>`).join("")}
+                        </div>
+
+                        <div class="mt-auto flex items-center justify-between gap-2 border-t border-slate-100 pt-3.5">
                             <div>
-                                <span class="text-[10px] text-slate-400 block uppercase font-bold">Mantención</span>
-                                <span class="text-xs font-extrabold text-slate-800">$${pet.monthlyCost.toLocaleString("es-CL")}/mes</span>
+                                <span class="block text-[10px] font-bold uppercase tracking-wide text-slate-400">Mantención</span>
+                                <span class="text-sm font-extrabold text-slate-900">$${pet.monthlyCost.toLocaleString("es-CL")}<span class="text-[10px] font-semibold text-slate-400">/mes</span></span>
                             </div>
                             <div class="flex items-center gap-1.5">
-                                <button onclick="openSponsorModalForPet(${pet.id})" class="px-2.5 py-2 rounded-xl bg-orange-50 hover:bg-orange-100 text-pet-orange text-xs font-bold transition-all" title="Apadrinar">
-                                    <i class="fa-solid fa-hand-holding-heart"></i>
+                                <button onclick="openSponsorModalForPet(${pet.id})" class="btn btn-sm btn-outline !px-2.5" title="Apadrinar a ${pet.name}" aria-label="Apadrinar a ${pet.name}">
+                                    <i class="fa-solid fa-hand-holding-heart text-pet-orange"></i>
                                 </button>
-                                <button onclick="openPetModal(${pet.id})" class="px-3 py-2 rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-700 text-xs font-bold transition-all">
-                                    Ficha
+                                <button onclick="openPetModal(${pet.id})" class="btn btn-sm btn-soft">
+                                    Ver ficha
                                 </button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
             `,
     )
     .join("");
@@ -1169,7 +1186,8 @@ function updateVetCard() {
 
   const badgeEl = document.getElementById("vet-card-status-badge");
   badgeEl.textContent = record.overallBadge;
-  badgeEl.className = `px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-${record.overallBadgeColor}-500/20 text-${record.overallBadgeColor}-300 border border-${record.overallBadgeColor}-400/30`;
+  badgeEl.className =
+    "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-400/30";
 
   document.getElementById("vet-history-subtitle").textContent =
     `Mostrando expediente médico oficial de ${pet.name} (Chip: ${record.chip})`;
@@ -1285,7 +1303,6 @@ function saveCustomReminder(e) {
 
 let currentModalPetId = 1;
 function openSponsorModal(presetAmount) {
-  populateSponsorPetSelect();
   if (presetAmount) {
     document.getElementById("sponsor-amount-select").value = presetAmount;
   }
@@ -1311,7 +1328,8 @@ function saveSponsorship(e) {
   const petId = parseInt(document.getElementById("sponsor-pet-select").value);
   const pet = PETS_DATA.find((p) => p.id === petId);
   const petName = pet ? pet.name : "la mascota";
-  alert(
+  showToast(
+    "Apadrinamiento registrado",
     `¡Muchas gracias por apadrinar a ${petName}! Te enviaremos el comprobante y los reportes médicos mensuales a tu correo.`,
   );
   closeSponsorModal();
@@ -1454,28 +1472,34 @@ function calculateMatch(e) {
   });
 }
 
-function switchTab(tabId) {
+function switchTab(tabId, options = {}) {
+  const targetView = document.getElementById(`view-${tabId}`);
+  if (!targetView) return;
+
   document
     .querySelectorAll(".tab-content")
     .forEach((el) => el.classList.add("hidden"));
-  const targetView = document.getElementById(`view-${tabId}`);
-  if (targetView) targetView.classList.remove("hidden");
+  targetView.classList.remove("hidden");
 
-  document.querySelectorAll(".nav-btn").forEach((btn) => {
-    btn.classList.remove("text-brand-600", "bg-brand-50");
-    btn.classList.add("text-slate-600");
+  document.querySelectorAll("[data-tab]").forEach((el) => {
+    const isActive = el.dataset.tab === tabId;
+    el.classList.toggle("is-active", isActive);
+    if (isActive) el.setAttribute("aria-current", "page");
+    else el.removeAttribute("aria-current");
   });
-
-  const activeNav = document.getElementById(`nav-${tabId}`);
-  if (activeNav) {
-    activeNav.classList.remove("text-slate-600");
-    activeNav.classList.add("text-brand-600", "bg-brand-50");
-  }
 
   const mobileMenu = document.getElementById("mobile-menu");
   if (mobileMenu) mobileMenu.classList.add("hidden");
+  const menuIcon = document.getElementById("menu-icon");
+  if (menuIcon) menuIcon.className = "fa-solid fa-bars text-xl";
+  const menuButton = document.getElementById("mobile-menu-btn");
+  if (menuButton) menuButton.setAttribute("aria-expanded", "false");
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (!options.skipHash && window.location.hash !== `#${tabId}`) {
+    history.replaceState(null, "", `#${tabId}`);
+  }
+
+  if (!options.skipScroll) window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function openFosterModal(presetModality) {
@@ -1524,7 +1548,8 @@ function switchReqTab(category) {
 
 function saveFosterApplication(e) {
   e.preventDefault();
-  alert(
+  showToast(
+    "Postulación recibida",
     "¡Muchas gracias por postular como Hogar Temporal! Nos pondremos en contacto contigo a la brevedad.",
   );
   closeFosterModal();
@@ -1532,128 +1557,103 @@ function saveFosterApplication(e) {
 
 function toggleMobileMenu() {
   const menu = document.getElementById("mobile-menu");
-  if (menu) menu.classList.toggle("hidden");
-}
-
-// ================= COMPARTIR CON CÓDIGO QR =================
-// Enlace corto oficial: muestra "AdoptaMatch" y redirige a la página publicada.
-const QR_PUBLIC_URL = "https://is.gd/AdoptaMatch";
-
-// En GitHub Pages, localhost o archivo local, el QR usa el enlace corto oficial.
-// Si más adelante usas un dominio propio, el QR usará automáticamente ese dominio.
-function getDefaultQrUrl() {
-  const host = window.location.hostname;
-  const isLocalHost = ["localhost", "127.0.0.1", "::1"].includes(host);
-  const isGitHubPages = host.endsWith("github.io");
-  if (window.location.protocol === "file:" || isLocalHost || isGitHubPages)
-    return QR_PUBLIC_URL;
-  return window.location.href;
-}
-
-const QR_DEFAULT_URL = getDefaultQrUrl();
-
-// Precarga en el modal la URL de esta misma página.
-const qrLinkInput = document.getElementById("qr-link-input");
-if (qrLinkInput) qrLinkInput.value = QR_DEFAULT_URL;
-
-// Genera la URL de la API pública que crea la imagen del QR (sin API key).
-function qrApiUrl(url, size = 400) {
-  // Evita codificar dos veces una URL que ya trae caracteres como %20.
-  let cleanUrl = url;
-  try {
-    cleanUrl = decodeURI(url);
-  } catch (error) {
-    /* se usa tal cual */
+  if (!menu) return;
+  const isHidden = menu.classList.toggle("hidden");
+  const icon = document.getElementById("menu-icon");
+  if (icon) {
+    icon.className = isHidden
+      ? "fa-solid fa-bars text-xl"
+      : "fa-solid fa-xmark text-xl";
   }
-  return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&margin=12&data=${encodeURIComponent(cleanUrl)}`;
+  const button = document.getElementById("mobile-menu-btn");
+  if (button) button.setAttribute("aria-expanded", String(!isHidden));
 }
 
-// Normaliza el enlace escrito por el usuario.
-function getQrTargetUrl() {
-  const input = document.getElementById("qr-link-input");
-  let url = (input.value || "").trim();
-  if (!url) url = QR_DEFAULT_URL;
-  if (!/^https?:\/\//i.test(url)) url = "https://" + url;
-  input.value = url;
-  return url;
-}
-
-function updateQrCode() {
-  const url = getQrTargetUrl();
-  const img = document.getElementById("qr-image");
-  const loading = document.getElementById("qr-loading");
-
-  loading.classList.remove("hidden");
-  img.classList.add("opacity-0");
-
-  img.onload = () => {
-    loading.classList.add("hidden");
-    img.classList.remove("opacity-0");
-  };
-  img.onerror = () => {
-    loading.innerHTML =
-      '<span class="text-red-500"><i class="fa-solid fa-triangle-exclamation mr-1"></i>No se pudo generar el QR</span>';
-  };
-
-  img.src = qrApiUrl(url) + `&cb=${Date.now()}`;
-  document.getElementById("qr-external-link").href = qrApiUrl(url, 600);
-}
+// ================= COMUNIDAD DE WHATSAPP Y CÓDIGO QR =================
+// El QR lleva directo al grupo oficial de WhatsApp de AdoptaMatch.
+const WHATSAPP_GROUP_URL =
+  "https://chat.whatsapp.com/HVwzIsaq2sB7siZdIWhIX7?s=cl&p=a&iam=2";
+const QR_IMAGE_SRC = "img/qr-whatsapp.png";
 
 function openQrModal() {
   const menu = document.getElementById("mobile-menu");
   if (menu) menu.classList.add("hidden");
-
-  const input = document.getElementById("qr-link-input");
-  if (!input.value) input.value = QR_DEFAULT_URL;
-
-  updateQrCode();
-  document.getElementById("qr-modal").classList.remove("hidden");
+  const modal = document.getElementById("qr-modal");
+  if (modal) modal.classList.remove("hidden");
 }
 
 function closeQrModal() {
-  document.getElementById("qr-modal").classList.add("hidden");
+  const modal = document.getElementById("qr-modal");
+  if (modal) modal.classList.add("hidden");
+}
+
+// Permite reemplazar el QR mostrado en Casos Reales y en la ficha.
+function updateCustomQrImage(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  const url = URL.createObjectURL(file);
+  ["main-whatsapp-qr", "modal-whatsapp-qr"].forEach((id) => {
+    const img = document.getElementById(id);
+    if (img) img.src = url;
+  });
+  showToast(
+    "QR actualizado",
+    "Tu imagen de código QR de WhatsApp se ha cargado en la página.",
+  );
 }
 
 async function downloadQrCode() {
-  const url = qrApiUrl(getQrTargetUrl(), 1000);
   try {
-    const response = await fetch(url);
+    const response = await fetch(QR_IMAGE_SRC);
     if (!response.ok) throw new Error("Error al descargar");
     const blob = await response.blob();
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "adoptamatch-qr.png";
+    link.download = "adoptamatch-whatsapp-qr.png";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(link.href);
+    showToast(
+      "QR descargado",
+      "Ya puedes compartir la imagen del código QR del grupo.",
+    );
   } catch (error) {
-    // Si la descarga falla, se abre la imagen en una pestaña nueva.
-    window.open(url, "_blank", "noopener");
+    window.open(QR_IMAGE_SRC, "_blank", "noopener");
   }
 }
 
 async function copyQrLink() {
-  const url = getQrTargetUrl();
   const label = document.getElementById("qr-copy-text");
+  const original = label ? label.textContent : "Copiar enlace";
   try {
-    await navigator.clipboard.writeText(url);
-    label.textContent = "¡Enlace copiado!";
+    await navigator.clipboard.writeText(WHATSAPP_GROUP_URL);
+    if (label) label.textContent = "¡Enlace copiado!";
   } catch (error) {
-    const input = document.getElementById("qr-link-input");
-    input.select();
-    document.execCommand("copy");
-    label.textContent = "¡Enlace copiado!";
+    window.prompt("Copia el enlace del grupo:", WHATSAPP_GROUP_URL);
   }
   setTimeout(() => {
-    label.textContent = "Copiar enlace";
+    if (label) label.textContent = original;
   }, 2000);
 }
 
-// Cerrar el modal de QR con la tecla Escape.
+// ================= CIERRE GLOBAL DE MODALES (Escape) =================
+const MODAL_CLOSERS = {
+  "article-modal": closeArticleModal,
+  "sponsor-modal": closeSponsorModal,
+  "foster-modal": closeFosterModal,
+  "add-reminder-modal": closeAddReminderModal,
+  "add-control-modal": closeAddControlModal,
+  "pet-detail-modal": closePetModal,
+  "qr-modal": closeQrModal,
+  "real-case-modal": closeRealCaseModal,
+  "publish-rc-modal": closePublishRealCaseModal,
+};
+
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    const qrModal = document.getElementById("qr-modal");
-    if (qrModal && !qrModal.classList.contains("hidden")) closeQrModal();
-  }
+  if (event.key !== "Escape") return;
+  Object.entries(MODAL_CLOSERS).forEach(([id, close]) => {
+    const modal = document.getElementById(id);
+    if (modal && !modal.classList.contains("hidden")) close();
+  });
 });

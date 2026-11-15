@@ -25,125 +25,141 @@
   >
     <!-- HEADER / NAVIGATION -->
     <header
-      class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm"
+      class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/85 backdrop-blur-lg"
     >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16 sm:h-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between gap-3 sm:h-[4.5rem]">
           <!-- Logo -->
-          <div
-            class="flex items-center space-x-3 cursor-pointer"
-            onclick="switchTab('inicio')"
+          <a
+            href="#inicio"
+            onclick="
+              switchTab('inicio');
+              return false;
+            "
+            class="flex shrink-0 items-center gap-3"
+            aria-label="AdoptaMatch, ir al inicio"
           >
-            <div
-              class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-tr from-brand-600 to-teal-400 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-brand-500/20"
+            <span
+              class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-tr from-brand-600 to-teal-400 text-white shadow-lg shadow-brand-500/25"
             >
-              <i class="fa-solid fa-paw text-xl sm:text-2xl"></i>
-            </div>
-            <div>
+              <i class="fa-solid fa-paw text-xl"></i>
+            </span>
+            <span class="leading-none">
               <span
-                class="text-xl 3xl:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-brand-700 via-teal-600 to-pet-orange bg-clip-text text-transparent"
+                class="block bg-gradient-to-r from-brand-700 via-teal-600 to-pet-orange bg-clip-text text-xl font-extrabold tracking-tight text-transparent 3xl:text-2xl"
                 >AdoptaMatch</span
               >
               <span
-                class="hidden 3xl:block text-[10px] font-semibold tracking-widest text-slate-400 uppercase -mt-1 whitespace-nowrap"
-                >Plataforma de Adopción Responsable</span
+                class="mt-1 hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400 3xl:block"
+                >Adopción responsable</span
               >
-            </div>
-          </div>
+            </span>
+          </a>
 
-          <!-- Navigation Desktop -->
-          <nav class="hidden xl:flex items-center space-x-0.5">
+          <!-- Navegación de escritorio -->
+          <nav
+            class="hidden items-center gap-0.5 xl:flex"
+            aria-label="Navegación principal"
+          >
             <button
               onclick="switchTab('inicio')"
-              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap transition-all text-brand-600 bg-brand-50"
+              class="nav-link"
+              data-tab="inicio"
               id="nav-inicio"
             >
               Inicio
             </button>
             <button
               onclick="switchTab('casos-reales')"
-              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-bold whitespace-nowrap text-rose-600 bg-rose-50 hover:bg-rose-100 transition-all flex items-center gap-1.5"
+              class="nav-link"
+              data-tab="casos-reales"
+              data-accent="rose"
               id="nav-casos-reales"
             >
-              <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span
-              >Casos Reales
+              Casos Reales
             </button>
             <button
               onclick="switchTab('match')"
-              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-link"
+              data-tab="match"
               id="nav-match"
             >
               Test Match
             </button>
             <button
               onclick="switchTab('apadrinar')"
-              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-link"
+              data-tab="apadrinar"
               id="nav-apadrinar"
             >
               Apadrinar
             </button>
             <button
               onclick="switchTab('hogar-temporal')"
-              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-link"
+              data-tab="hogar-temporal"
               id="nav-hogar-temporal"
             >
               Hogar Temporal
             </button>
             <button
               onclick="switchTab('veterinario')"
-              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-link"
+              data-tab="veterinario"
               id="nav-veterinario"
             >
               Carnet Vet
             </button>
             <button
               onclick="switchTab('financiamiento')"
-              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-link"
+              data-tab="financiamiento"
               id="nav-financiamiento"
             >
               Financiamiento
             </button>
             <button
               onclick="switchTab('educacion')"
-              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-link"
+              data-tab="educacion"
               id="nav-educacion"
             >
               Educación
             </button>
             <button
               onclick="switchTab('proyecto')"
-              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-link"
+              data-tab="proyecto"
               id="nav-proyecto"
             >
               El Proyecto
             </button>
           </nav>
 
-          <!-- Action Button -->
-          <div class="hidden sm:flex items-center space-x-3 ml-auto">
+          <!-- Acciones -->
+          <div class="ml-auto hidden items-center gap-2 sm:flex">
             <button
               onclick="openQrModal()"
-              class="w-11 h-11 flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-all"
-              title="Compartir esta página con un código QR"
-              aria-label="Compartir con código QR"
+              class="btn btn-icon btn-outline !text-emerald-600"
+              title="Grupo de WhatsApp"
+              aria-label="Abrir el QR del grupo de WhatsApp"
             >
-              <i class="fa-solid fa-qrcode text-lg"></i>
+              <i class="fa-brands fa-whatsapp text-lg"></i>
             </button>
-            <button
-              onclick="switchTab('match')"
-              class="px-3.5 3xl:px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-teal-500 hover:from-brand-700 hover:to-teal-600 text-white font-semibold text-sm whitespace-nowrap shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-            >
-              <i class="fa-solid fa-wand-magic-sparkles mr-2"></i
+            <button onclick="switchTab('match')" class="btn btn-md btn-primary">
+              <i class="fa-solid fa-wand-magic-sparkles"></i
               ><span class="hidden 3xl:inline">Encontrar </span>Mi Match
             </button>
           </div>
 
-          <!-- Mobile Menu Button -->
+          <!-- Menú móvil -->
           <div class="flex xl:hidden">
             <button
               id="mobile-menu-btn"
               onclick="toggleMobileMenu()"
-              class="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+              class="rounded-xl p-2.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+              aria-label="Abrir menú"
+              aria-expanded="false"
             >
               <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
             </button>
@@ -151,71 +167,105 @@
         </div>
       </div>
 
-      <!-- Mobile Dropdown -->
+      <!-- Menú desplegable móvil -->
       <div
         id="mobile-menu"
-        class="hidden xl:hidden border-t border-slate-100 bg-white px-4 pt-2 pb-4 space-y-2"
+        class="hidden border-t border-slate-100 bg-white px-4 pb-5 pt-3 xl:hidden"
       >
-        <button
-          onclick="switchTab('inicio')"
-          class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600"
-        >
-          Inicio & Mascotas
-        </button>
-        <button
-          onclick="switchTab('casos-reales')"
-          class="w-full text-left px-4 py-2.5 rounded-xl font-bold text-rose-600 bg-rose-50 hover:bg-rose-100"
-        >
-          Casos Reales en Busca de Hogar
-        </button>
-        <button
-          onclick="switchTab('match')"
-          class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600"
-        >
-          Test de Compatibilidad
-        </button>
-        <button
-          onclick="switchTab('apadrinar')"
-          class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600"
-        >
-          Apadrinar una Mascota
-        </button>
-        <button
-          onclick="switchTab('hogar-temporal')"
-          class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600"
-        >
-          Hogares Temporales
-        </button>
-        <button
-          onclick="switchTab('veterinario')"
-          class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600"
-        >
-          Registro Veterinario
-        </button>
-        <button
-          onclick="switchTab('financiamiento')"
-          class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600"
-        >
-          Financiamiento & Alianzas
-        </button>
-        <button
-          onclick="switchTab('educacion')"
-          class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600"
-        >
-          Tenencia Responsable
-        </button>
-        <button
-          onclick="switchTab('proyecto')"
-          class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600"
-        >
-          Detalles del Proyecto
-        </button>
-        <button
-          onclick="openQrModal()"
-          class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-brand-700 bg-brand-50 hover:bg-brand-100"
-        >
-          <i class="fa-solid fa-qrcode mr-2"></i>Compartir con QR
-        </button>
+        <nav class="space-y-1" aria-label="Navegación móvil">
+          <button
+            onclick="switchTab('inicio')"
+            class="mobile-link"
+            data-tab="inicio"
+          >
+            <i class="fa-solid fa-house w-4 text-center text-slate-400"></i>
+            Inicio y mascotas
+          </button>
+          <button
+            onclick="switchTab('casos-reales')"
+            class="mobile-link"
+            data-tab="casos-reales"
+            data-accent="rose"
+          >
+            <i
+              class="fa-solid fa-house-chimney-medical w-4 text-center text-slate-400"
+            ></i>
+            Casos reales en busca de hogar
+          </button>
+          <button
+            onclick="switchTab('match')"
+            class="mobile-link"
+            data-tab="match"
+          >
+            <i
+              class="fa-solid fa-wand-magic-sparkles w-4 text-center text-slate-400"
+            ></i>
+            Test de compatibilidad
+          </button>
+          <button
+            onclick="switchTab('apadrinar')"
+            class="mobile-link"
+            data-tab="apadrinar"
+          >
+            <i
+              class="fa-solid fa-hand-holding-heart w-4 text-center text-slate-400"
+            ></i>
+            Apadrinar una mascota
+          </button>
+          <button
+            onclick="switchTab('hogar-temporal')"
+            class="mobile-link"
+            data-tab="hogar-temporal"
+          >
+            <i class="fa-solid fa-couch w-4 text-center text-slate-400"></i>
+            Hogares temporales
+          </button>
+          <button
+            onclick="switchTab('veterinario')"
+            class="mobile-link"
+            data-tab="veterinario"
+          >
+            <i
+              class="fa-solid fa-stethoscope w-4 text-center text-slate-400"
+            ></i>
+            Registro veterinario
+          </button>
+          <button
+            onclick="switchTab('financiamiento')"
+            class="mobile-link"
+            data-tab="financiamiento"
+          >
+            <i class="fa-solid fa-handshake w-4 text-center text-slate-400"></i>
+            Financiamiento y alianzas
+          </button>
+          <button
+            onclick="switchTab('educacion')"
+            class="mobile-link"
+            data-tab="educacion"
+          >
+            <i class="fa-solid fa-book-open w-4 text-center text-slate-400"></i>
+            Tenencia responsable
+          </button>
+          <button
+            onclick="switchTab('proyecto')"
+            class="mobile-link"
+            data-tab="proyecto"
+          >
+            <i
+              class="fa-solid fa-diagram-project w-4 text-center text-slate-400"
+            ></i>
+            Detalles del proyecto
+          </button>
+          <a
+            href="https://chat.whatsapp.com/HVwzIsaq2sB7siZdIWhIX7?s=cl&p=a&iam=2"
+            target="_blank"
+            rel="noopener"
+            class="mobile-link !text-emerald-700"
+          >
+            <i class="fa-brands fa-whatsapp w-4 text-center"></i>
+            Grupo de WhatsApp
+          </a>
+        </nav>
       </div>
     </header>
 
@@ -224,113 +274,352 @@
       <!-- ================= INICIO VIEW ================= -->
       <section id="view-inicio" class="tab-content py-8 sm:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <!-- Hero Banner -->
-          <div
-            class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-slate-800 to-brand-950 text-white p-8 sm:p-12 shadow-2xl"
-          >
+          <!-- Hero -->
+          <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-grid"></div>
             <div
-              class="absolute inset-0 opacity-20 bg-[radial-gradient(#22c55e_1px,transparent_1px)] [background-size:16px_16px]"
-            ></div>
-            <div class="relative z-10 max-w-2xl space-y-4">
-              <span
-                class="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-500/20 text-brand-400 border border-brand-500/30 inline-block"
-              >
-                <i class="fa-solid fa-heart mr-1.5"></i> Red de Rescate y
-                Adopción Conectada
+              class="relative z-10 grid items-center gap-10 p-7 sm:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:p-12"
+            >
+              <div class="space-y-5">
+                <span class="eyebrow eyebrow-dark">
+                  <i class="fa-solid fa-heart"></i> Red de rescate y adopción
+                  conectada
+                </span>
+                <h1
+                  id="hero-title"
+                  class="text-3xl font-black leading-[1.08] tracking-tight sm:text-4xl xl:text-5xl"
+                >
+                  Encuentra a tu compañero ideal con
+                  <span class="text-brand-400">adopción consciente</span>
+                </h1>
+                <p
+                  class="max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base"
+                >
+                  Evaluamos la compatibilidad entre tu estilo de vida, tu
+                  presupuesto y las necesidades reales de cada perro o gato
+                  rescatado para garantizar un hogar permanente.
+                </p>
+                <div class="flex flex-wrap gap-3 pt-1">
+                  <button
+                    onclick="switchTab('casos-reales')"
+                    class="btn btn-lg btn-rose"
+                  >
+                    <i class="fa-solid fa-house-chimney-medical"></i>Ver casos
+                    reales
+                  </button>
+                  <button
+                    onclick="switchTab('match')"
+                    class="btn btn-lg btn-primary"
+                  >
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>Hacer test
+                    match
+                  </button>
+                  <button
+                    onclick="switchTab('apadrinar')"
+                    class="btn btn-lg btn-ghost-light"
+                  >
+                    Apadrinar
+                  </button>
+                </div>
+                <div class="flex flex-wrap items-center gap-5 pt-4 sm:gap-7">
+                  <div class="hero-stat">
+                    <strong>24</strong>
+                    <span>mascotas rescatadas</span>
+                  </div>
+                  <div class="hero-stat">
+                    <strong>6</strong>
+                    <span>casos urgentes</span>
+                  </div>
+                  <div class="hero-stat">
+                    <strong>100%</strong>
+                    <span>seguimiento veterinario</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hero-visual">
+                <div class="hero-photo">
+                  <img
+                    src="img/rocky.jpg"
+                    alt="Rocky, perro rescatado disponible para adopción"
+                    loading="eager"
+                  />
+                  <div class="absolute bottom-4 left-4 z-[2] text-white">
+                    <p class="text-lg font-black leading-tight">Rocky</p>
+                    <p class="text-[11px] font-semibold text-white/80">
+                      4 años · Macho · Tamaño grande
+                    </p>
+                  </div>
+                </div>
+                <div class="hero-float" style="top: 0.75rem; left: 0.75rem">
+                  <span
+                    class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-brand-700"
+                  >
+                    <i class="fa-solid fa-heart-pulse"></i>
+                  </span>
+                  <div>
+                    <p
+                      class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                    >
+                      Compatibilidad
+                    </p>
+                    <p class="text-sm font-black text-slate-900">94% match</p>
+                  </div>
+                </div>
+                <div
+                  class="hero-float"
+                  style="bottom: 1.25rem; right: 0.75rem; animation-delay: 1.2s"
+                >
+                  <span
+                    class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600"
+                  >
+                    <i class="fa-solid fa-shield-heart"></i>
+                  </span>
+                  <div>
+                    <p
+                      class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                    >
+                      Estado de salud
+                    </p>
+                    <p class="text-sm font-black text-slate-900">Al día</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Catálogo -->
+          <section class="space-y-6" aria-labelledby="catalogo-title">
+            <div class="section-head">
+              <div>
+                <span class="eyebrow eyebrow-brand">
+                  <i class="fa-solid fa-paw"></i> Catálogo
+                </span>
+                <h2 id="catalogo-title" class="section-title">
+                  Mascotas disponibles para adopción
+                </h2>
+                <p class="section-sub">
+                  Fichas con historia de rescate, estado de salud y presupuesto
+                  de mantención estimado. Filtra según tu hogar y estilo de
+                  vida.
+                </p>
+              </div>
+              <span class="chip chip-success shrink-0">
+                <i class="fa-solid fa-shield-heart"></i>Perfiles verificados
               </span>
-              <h1
-                class="text-3xl sm:text-5xl font-black tracking-tight leading-tight"
-              >
-                Encuentra a tu compañero ideal con adopción consciente
-              </h1>
-              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                Evaluamos la compatibilidad entre tu estilo de vida, tu
-                presupuesto y las necesidades reales de cada perro o gato
-                rescatado para garantizar un hogar permanente.
-              </p>
-              <div class="pt-2 flex flex-wrap gap-3">
-                <button
-                  onclick="switchTab('casos-reales')"
-                  class="px-6 py-3.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-rose-500/30 transition-all flex items-center gap-2"
+            </div>
+
+            <!-- Barra de filtros -->
+            <div
+              class="surface flex flex-col gap-3 p-3 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div class="flex flex-wrap items-center gap-2">
+                <span
+                  class="hidden text-[11px] font-bold uppercase tracking-wider text-slate-400 sm:inline"
                 >
-                  <i class="fa-solid fa-house-chimney-medical"></i>Ver Casos
-                  Reales en Busca de Hogar
-                </button>
-                <button
-                  onclick="switchTab('match')"
-                  class="px-6 py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-500/30 transition-all"
+                  <i class="fa-solid fa-filter mr-1"></i>Filtrar
+                </span>
+
+                <select
+                  id="filter-type"
+                  onchange="renderPets()"
+                  class="field !w-auto !py-2 !text-xs font-semibold"
+                  aria-label="Filtrar por especie"
                 >
-                  Realizar Test Match
-                </button>
-                <button
-                  onclick="switchTab('apadrinar')"
-                  class="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm rounded-xl border border-white/20 backdrop-blur transition-all"
+                  <option value="all">Todas las especies</option>
+                  <option value="perro">Perros</option>
+                  <option value="gato">Gatos</option>
+                </select>
+
+                <select
+                  id="filter-size"
+                  onchange="renderPets()"
+                  class="field !w-auto !py-2 !text-xs font-semibold"
+                  aria-label="Filtrar por tamaño"
                 >
-                  Apadrinar un Rescatado
+                  <option value="all">Todos los tamaños</option>
+                  <option value="pequeño">Pequeño</option>
+                  <option value="mediano">Mediano</option>
+                  <option value="grande">Grande</option>
+                </select>
+
+                <select
+                  id="filter-age"
+                  onchange="renderPets()"
+                  class="field !w-auto !py-2 !text-xs font-semibold"
+                  aria-label="Filtrar por edad"
+                >
+                  <option value="all">Todas las edades</option>
+                  <option value="cachorro">Cachorro / Gatito</option>
+                  <option value="joven">Joven</option>
+                  <option value="adulto">Adulto</option>
+                </select>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <span
+                  id="pets-counter"
+                  class="text-[11px] font-semibold text-slate-400"
+                ></span>
+                <button
+                  onclick="resetPetsFilters()"
+                  class="btn btn-sm btn-outline"
+                  title="Limpiar filtros"
+                >
+                  <i class="fa-solid fa-rotate-left"></i>Limpiar
                 </button>
               </div>
             </div>
-          </div>
 
-          <!-- Catalog & Filters Section Header -->
-          <div
-            class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-6"
-          >
-            <div>
-              <h2
-                class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight"
-              >
-                Mascotas Disponibles para Adopción
-              </h2>
-              <p class="text-slate-500 text-xs sm:text-sm mt-1">
-                Explora las 24 fichas con historias de superación y presupuestos
-                de mantención estimado.
-              </p>
+            <div
+              id="pets-grid"
+              class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+            >
+              <!-- Populated dynamically -->
+            </div>
+          </section>
+
+          <!-- Cómo funciona -->
+          <section class="space-y-6" aria-labelledby="proceso-title">
+            <div class="section-head">
+              <div>
+                <span class="eyebrow eyebrow-brand">Proceso</span>
+                <h2 id="proceso-title" class="section-title">
+                  Cómo funciona AdoptaMatch
+                </h2>
+                <p class="section-sub">
+                  Tres pasos simples para pasar de la búsqueda a una adopción
+                  responsable, con acompañamiento en todo el proceso.
+                </p>
+              </div>
+              <button onclick="switchTab('match')" class="btn btn-md btn-soft">
+                Comenzar test <i class="fa-solid fa-arrow-right"></i>
+              </button>
             </div>
 
-            <!-- Filters -->
-            <div class="flex flex-wrap items-center gap-2">
-              <select
-                id="filter-type"
-                onchange="renderPets()"
-                class="px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:ring-2 focus:ring-brand-500 outline-none"
-              >
-                <option value="all">Todas las Especies</option>
-                <option value="perro">Perros</option>
-                <option value="gato">Gatos</option>
-              </select>
+            <div class="grid gap-4 md:grid-cols-3">
+              <article class="step-card">
+                <div class="flex items-center justify-between">
+                  <span class="step-number">01</span>
+                  <i class="fa-solid fa-magnifying-glass text-brand-600"></i>
+                </div>
+                <h3 class="mt-4 text-base font-extrabold text-slate-900">
+                  Explora y filtra
+                </h3>
+                <p class="mt-1.5 text-xs leading-relaxed text-slate-500">
+                  Revisa fichas con historia, estado de salud y costo de
+                  mantención antes de postular.
+                </p>
+              </article>
 
-              <select
-                id="filter-size"
-                onchange="renderPets()"
-                class="px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:ring-2 focus:ring-brand-500 outline-none"
-              >
-                <option value="all">Todos los Tamaños</option>
-                <option value="pequeño">Pequeño</option>
-                <option value="mediano">Mediano</option>
-                <option value="grande">Grande</option>
-              </select>
+              <article class="step-card">
+                <div class="flex items-center justify-between">
+                  <span class="step-number">02</span>
+                  <i class="fa-solid fa-wand-magic-sparkles text-brand-600"></i>
+                </div>
+                <h3 class="mt-4 text-base font-extrabold text-slate-900">
+                  Haz el test match
+                </h3>
+                <p class="mt-1.5 text-xs leading-relaxed text-slate-500">
+                  Responde sobre tu hogar, energía y presupuesto para recibir
+                  una compatibilidad estimada.
+                </p>
+              </article>
 
-              <select
-                id="filter-age"
-                onchange="renderPets()"
-                class="px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:ring-2 focus:ring-brand-500 outline-none"
-              >
-                <option value="all">Todas las Edades</option>
-                <option value="cachorro">Cachorro / Gatito</option>
-                <option value="joven">Joven</option>
-                <option value="adulto">Adulto</option>
-              </select>
+              <article class="step-card">
+                <div class="flex items-center justify-between">
+                  <span class="step-number">03</span>
+                  <i class="fa-solid fa-file-signature text-brand-600"></i>
+                </div>
+                <h3 class="mt-4 text-base font-extrabold text-slate-900">
+                  Postula y adopta
+                </h3>
+                <p class="mt-1.5 text-xs leading-relaxed text-slate-500">
+                  Envía tu solicitud, coordina con el rescatista y recibe
+                  seguimiento veterinario.
+                </p>
+              </article>
             </div>
-          </div>
+          </section>
 
-          <!-- Grid of 24 Pets -->
-          <div
-            id="pets-grid"
-            class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          <!-- Indicadores -->
+          <section
+            class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            aria-label="Indicadores del proyecto"
           >
-            <!-- Populated dynamically -->
-          </div>
+            <div class="stat-card">
+              <p class="stat-value">24</p>
+              <p class="stat-label">Mascotas en adopción</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-value">6</p>
+              <p class="stat-label">Casos reales activos</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-value">9</p>
+              <p class="stat-label">Comunas con rescates</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-value">100%</p>
+              <p class="stat-label">Seguimiento veterinario</p>
+            </div>
+          </section>
+
+          <!-- Comunidad de WhatsApp -->
+          <section class="community-card" aria-labelledby="comunidad-title">
+            <div
+              class="relative z-10 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center"
+            >
+              <div class="max-w-2xl space-y-4">
+                <span class="eyebrow eyebrow-dark">
+                  <i class="fa-brands fa-whatsapp"></i> Comunidad
+                </span>
+                <h2
+                  id="comunidad-title"
+                  class="text-2xl font-black tracking-tight sm:text-3xl"
+                >
+                  Únete al grupo de WhatsApp de AdoptaMatch
+                </h2>
+                <p class="max-w-xl text-sm leading-relaxed text-emerald-50/85">
+                  Recibe casos urgentes, coordinación de hogares temporales y
+                  avisos de rescates directamente en tu teléfono.
+                </p>
+                <div class="flex flex-wrap gap-3 pt-1">
+                  <a
+                    href="https://chat.whatsapp.com/HVwzIsaq2sB7siZdIWhIX7?s=cl&p=a&iam=2"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn-lg btn-whatsapp"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i>Entrar al grupo
+                  </a>
+                  <button
+                    onclick="openQrModal()"
+                    class="btn btn-lg btn-ghost-light"
+                  >
+                    <i class="fa-solid fa-qrcode"></i>Ver código QR
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center gap-4 rounded-2xl border border-white/15 bg-white/10 p-4"
+              >
+                <img
+                  src="img/qr-whatsapp.png"
+                  alt="Código QR del grupo de WhatsApp de AdoptaMatch"
+                  class="h-24 w-24 rounded-xl bg-white p-1.5"
+                  loading="lazy"
+                />
+                <p
+                  class="max-w-[11rem] text-xs leading-relaxed text-emerald-50/80"
+                >
+                  Escanea con la cámara de tu teléfono y entra al grupo al
+                  instante.
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -340,79 +629,161 @@
         class="tab-content hidden py-12 bg-slate-50"
       >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <!-- Header Banner -->
+          <!-- Encabezado -->
           <div
-            class="bg-gradient-to-r from-rose-900 via-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6"
+            class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-rose-950 via-slate-900 to-slate-800 p-8 text-white shadow-deep sm:p-10"
           >
-            <div class="space-y-3 max-w-2xl">
-              <span
-                class="px-3 py-1 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-full text-xs font-bold uppercase tracking-wider inline-block"
-              >
-                Rescates Verificados • Adopción Directa
-              </span>
-              <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
-                Mascotas Reales en Busca de Hogar
-              </h2>
-              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Estos animales fueron rescatados recientemente en comunas de la
-                Región Metropolitana y esperan una familia definitiva. Cada caso
-                cuenta con respaldo de rescatistas independientes y seguimiento
-                veterinario.
-              </p>
-            </div>
-            <button
-              onclick="openPublishRealCaseModal()"
-              class="shrink-0 px-6 py-4 bg-white hover:bg-slate-100 text-rose-700 font-extrabold text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center gap-2"
+            <div
+              class="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-rose-500/20 blur-3xl"
+            ></div>
+            <div
+              class="relative z-10 grid items-center gap-8 lg:grid-cols-[1.55fr_1fr]"
             >
-              <i class="fa-solid fa-plus-circle"></i>Publicar un Rescate Real
-            </button>
+              <div class="space-y-4">
+                <span
+                  class="eyebrow eyebrow-rose !border !border-rose-400/30 !bg-rose-500/15 !text-rose-200"
+                >
+                  <i class="fa-solid fa-shield-heart"></i> Rescates verificados
+                </span>
+                <h2 class="text-3xl font-black tracking-tight sm:text-4xl">
+                  Mascotas reales en busca de hogar
+                </h2>
+                <p class="text-sm leading-relaxed text-slate-300">
+                  Ficha acotada con fotografía, edad y estado clínico. Para
+                  postular o publicar un rescatado, únete a nuestro grupo
+                  oficial de WhatsApp escaneando el código QR.
+                </p>
+
+                <div class="grid gap-2.5 pt-1 text-[11px] sm:grid-cols-3">
+                  <div
+                    class="rounded-2xl border border-white/10 bg-white/10 p-3"
+                  >
+                    <span class="mb-1 block font-black text-emerald-400"
+                      >Paso 1</span
+                    >
+                    Escanea el código QR y únete al grupo de WhatsApp.
+                  </div>
+                  <div
+                    class="rounded-2xl border border-white/10 bg-white/10 p-3"
+                  >
+                    <span class="mb-1 block font-black text-emerald-400"
+                      >Paso 2</span
+                    >
+                    Envía la foto del animal rescatado o del caso que te
+                    interesa.
+                  </div>
+                  <div
+                    class="rounded-2xl border border-white/10 bg-white/10 p-3"
+                  >
+                    <span class="mb-1 block font-black text-emerald-400"
+                      >Paso 3</span
+                    >
+                    Pregunta directamente por él para coordinar su adopción.
+                  </div>
+                </div>
+
+                <div class="pt-1">
+                  <button
+                    onclick="openPublishRealCaseModal()"
+                    class="btn btn-md btn-ghost-light"
+                  >
+                    <i class="fa-solid fa-plus"></i>Publicar un rescate
+                  </button>
+                </div>
+              </div>
+
+              <!-- QR del grupo de WhatsApp -->
+              <div
+                class="mx-auto w-full max-w-[19rem] rounded-3xl border-4 border-emerald-500/40 bg-[#111b21] p-5 text-center shadow-2xl"
+              >
+                <span
+                  class="eyebrow !border !border-emerald-500/30 !bg-emerald-500/20 !text-emerald-300"
+                >
+                  <i class="fa-brands fa-whatsapp"></i> Adopta | Match
+                </span>
+                <div
+                  class="group relative mx-auto mt-4 h-52 w-52 overflow-hidden rounded-2xl bg-[#111b21]"
+                >
+                  <img
+                    id="main-whatsapp-qr"
+                    src="img/qr-whatsapp.png"
+                    alt="QR del grupo de WhatsApp de AdoptaMatch"
+                    class="h-full w-full object-contain"
+                  />
+                  <label
+                    class="absolute inset-0 flex cursor-pointer flex-col items-center justify-center gap-1 bg-black/70 p-2 text-[11px] font-bold text-emerald-300 opacity-0 transition-opacity group-hover:opacity-100"
+                  >
+                    <i class="fa-solid fa-upload text-lg"></i>
+                    <span>Cargar imagen QR</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onchange="updateCustomQrImage(event)"
+                      class="hidden"
+                    />
+                  </label>
+                </div>
+                <p class="mt-3 text-sm font-black text-white">
+                  Escanea para unirte al grupo
+                </p>
+                <p class="mt-1 text-[11px] leading-tight text-slate-300">
+                  Envía la foto del rescatado al grupo y pregunta por él.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <!-- Filter Bar -->
+          <!-- Filtros -->
           <div
-            class="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm"
+            class="surface flex flex-wrap items-center justify-between gap-4 p-4"
           >
-            <div class="flex flex-wrap items-center gap-2">
+            <div
+              class="flex flex-wrap items-center gap-2"
+              role="group"
+              aria-label="Filtrar casos reales"
+            >
               <button
                 onclick="filterRealCases('all')"
                 id="rc-filter-all"
-                class="rc-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-rose-600 text-white"
+                class="rc-filter-btn is-active"
+                aria-pressed="true"
               >
-                Todos los Casos
+                Todos los casos
               </button>
               <button
                 onclick="filterRealCases('urgente')"
                 id="rc-filter-urgente"
-                class="rc-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200"
+                class="rc-filter-btn"
+                aria-pressed="false"
               >
-                Adopción Urgente
+                Adopción urgente
               </button>
               <button
                 onclick="filterRealCases('perro')"
                 id="rc-filter-perro"
-                class="rc-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200"
+                class="rc-filter-btn"
+                aria-pressed="false"
               >
-                Solo Perros
+                Solo perros
               </button>
               <button
                 onclick="filterRealCases('gato')"
                 id="rc-filter-gato"
-                class="rc-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200"
+                class="rc-filter-btn"
+                aria-pressed="false"
               >
-                Solo Gatos
+                Solo gatos
               </button>
             </div>
-            <span
-              class="text-xs font-semibold text-slate-500"
-              id="real-cases-counter"
-              >Mostrando 6 casos activos</span
-            >
+            <span class="chip" id="real-cases-counter">
+              Mostrando 6 casos activos
+            </span>
           </div>
 
           <!-- Real Cases Grid -->
           <div
             id="real-cases-grid"
-            class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
           >
             <!-- Populated dynamically -->
           </div>
@@ -1684,14 +2055,17 @@
     <!-- ARTICLE READ MODAL -->
     <div
       id="article-modal"
-      class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
     >
       <div
         class="bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-slate-100 p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto"
       >
         <button
           onclick="closeArticleModal()"
-          class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold"
+          class="modal-close"
+          aria-label="Cerrar"
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -1735,14 +2109,17 @@
     <!-- SPONSORSHIP MODAL -->
     <div
       id="sponsor-modal"
-      class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
     >
       <div
         class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-100 p-6 relative max-h-[90vh] overflow-y-auto"
       >
         <button
           onclick="closeSponsorModal()"
-          class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold text-xs"
+          class="modal-close"
+          aria-label="Cerrar"
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -1812,7 +2189,7 @@
             <button
               type="button"
               onclick="closeSponsorModal()"
-              class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl"
+              class="btn btn-md btn-outline w-1/2"
             >
               Cancelar
             </button>
@@ -1828,16 +2205,14 @@
     </div>
 
     <!-- FOSTER HOME MODAL -->
-    <div
-      id="foster-modal"
-      class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
-    >
+    <div id="foster-modal" class="modal hidden" role="dialog" aria-modal="true">
       <div
         class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-100 p-6 relative max-h-[90vh] overflow-y-auto"
       >
         <button
           onclick="closeFosterModal()"
-          class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold text-xs"
+          class="modal-close"
+          aria-label="Cerrar"
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -1889,7 +2264,7 @@
             <button
               type="button"
               onclick="closeFosterModal()"
-              class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl"
+              class="btn btn-md btn-outline w-1/2"
             >
               Cancelar
             </button>
@@ -1907,14 +2282,17 @@
     <!-- ADD REMINDER MODAL -->
     <div
       id="add-reminder-modal"
-      class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
     >
       <div
         class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-100 p-6 relative"
       >
         <button
           onclick="closeAddReminderModal()"
-          class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold text-xs"
+          class="modal-close"
+          aria-label="Cerrar"
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -1967,7 +2345,7 @@
             <button
               type="button"
               onclick="closeAddReminderModal()"
-              class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl"
+              class="btn btn-md btn-outline w-1/2"
             >
               Cancelar
             </button>
@@ -1985,14 +2363,17 @@
     <!-- ADD MEDICAL CONTROL MODAL -->
     <div
       id="add-control-modal"
-      class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
     >
       <div
         class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-100 p-6 relative"
       >
         <button
           onclick="closeAddControlModal()"
-          class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold text-xs"
+          class="modal-close"
+          aria-label="Cerrar"
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -2066,7 +2447,7 @@
             <button
               type="button"
               onclick="closeAddControlModal()"
-              class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl"
+              class="btn btn-md btn-outline w-1/2"
             >
               Cancelar
             </button>
@@ -2084,14 +2465,17 @@
     <!-- PET DETAIL MODAL -->
     <div
       id="pet-detail-modal"
-      class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
     >
       <div
         class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-slate-100 p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto"
       >
         <button
           onclick="closePetModal()"
-          class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold"
+          class="modal-close"
+          aria-label="Cerrar"
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -2185,142 +2569,243 @@
       </div>
     </div>
 
-    <!-- QR SHARE MODAL -->
+    <!-- MODAL: COMUNIDAD DE WHATSAPP -->
     <div
       id="qr-modal"
-      class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="qr-modal-title"
     >
-      <div
-        class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-100 p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto"
-      >
+      <div class="modal-card max-w-md p-6 sm:p-8">
         <button
           onclick="closeQrModal()"
-          class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold"
+          class="modal-close"
+          aria-label="Cerrar"
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
 
         <div class="text-center">
           <div
-            class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-brand-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-brand-500/20"
+            class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#25d366]/15 text-[#128c4a]"
           >
-            <i class="fa-solid fa-qrcode text-2xl"></i>
+            <i class="fa-brands fa-whatsapp text-3xl"></i>
           </div>
-          <h3 class="text-2xl font-black text-slate-900 mt-4">
-            Comparte AdoptaMatch
+          <h3
+            id="qr-modal-title"
+            class="mt-4 text-2xl font-black text-slate-900"
+          >
+            Únete a la comunidad
           </h3>
-          <p class="text-xs text-slate-500 mt-1">
-            Escanea este código con la cámara de tu teléfono para abrir esta
-            misma página. Tu celular debe estar conectado a la misma red Wi-Fi
-            que este equipo.
+          <p
+            class="mx-auto mt-1 max-w-xs text-xs leading-relaxed text-slate-500"
+          >
+            Escanea el código con la cámara de tu teléfono o abre el enlace para
+            entrar al grupo de WhatsApp de AdoptaMatch.
           </p>
         </div>
 
-        <!-- QR generado por API -->
         <div
-          class="relative w-56 h-56 mx-auto mt-5 rounded-2xl border border-slate-200 bg-slate-50 flex items-center justify-center overflow-hidden"
+          class="mx-auto mt-5 w-60 max-w-full rounded-2xl border border-slate-200 bg-white p-3 shadow-soft"
         >
-          <div
-            id="qr-loading"
-            class="absolute inset-0 flex items-center justify-center text-slate-400 text-xs font-semibold"
-          >
-            <i class="fa-solid fa-spinner fa-spin mr-2"></i> Generando QR...
-          </div>
           <img
             id="qr-image"
-            alt="Código QR de AdoptaMatch"
-            class="w-full h-full object-contain p-2 transition-opacity duration-300 opacity-0"
+            src="img/qr-whatsapp.png"
+            alt="Código QR del grupo de WhatsApp de AdoptaMatch"
+            class="h-full w-full rounded-lg object-contain"
           />
         </div>
 
-        <!-- Enlace editable -->
-        <div class="mt-5 text-left">
-          <label
-            for="qr-link-input"
-            class="block text-[11px] font-bold text-slate-600 mb-1"
-            >Enlace a compartir</label
-          >
-          <div class="flex gap-2">
-            <input
-              id="qr-link-input"
-              type="url"
-              value="https://is.gd/AdoptaMatch"
-              placeholder="https://tu-sitio.com"
-              class="flex-1 min-w-0 px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:ring-2 focus:ring-brand-500 outline-none"
-              onkeydown="
-                if (event.key === 'Enter') {
-                  event.preventDefault();
-                  updateQrCode();
-                }
-              "
-            />
-            <button
-              onclick="updateQrCode()"
-              class="px-3.5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition-all"
-              title="Regenerar QR"
-              aria-label="Regenerar QR"
-            >
-              <i class="fa-solid fa-rotate"></i>
-            </button>
-          </div>
-          <p class="text-[10px] text-slate-400 mt-1.5">
-            <i class="fa-solid fa-lightbulb mr-1 text-amber-400"></i>El QR usa
-            el enlace corto oficial:
-            <span class="font-semibold text-slate-500">is.gd/AdoptaMatch</span>
-          </p>
-        </div>
+        <a
+          href="https://chat.whatsapp.com/HVwzIsaq2sB7siZdIWhIX7?s=cl&p=a&iam=2"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-md btn-whatsapp mt-5 w-full"
+        >
+          <i class="fa-brands fa-whatsapp text-base"></i>Entrar al grupo
+        </a>
 
-        <!-- Acciones -->
-        <div class="mt-4 grid grid-cols-2 gap-2">
-          <a
-            id="qr-external-link"
-            href="#"
-            target="_blank"
-            rel="noopener"
-            class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1.5"
-          >
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir QR
-          </a>
-          <button
-            onclick="downloadQrCode()"
-            class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1.5"
-          >
-            <i class="fa-solid fa-download"></i> Descargar
+        <div class="mt-2 grid grid-cols-2 gap-2">
+          <button onclick="downloadQrCode()" class="btn btn-sm btn-outline">
+            <i class="fa-solid fa-download"></i>Descargar QR
+          </button>
+          <button onclick="copyQrLink()" class="btn btn-sm btn-outline">
+            <i class="fa-solid fa-link"></i
+            ><span id="qr-copy-text">Copiar enlace</span>
           </button>
         </div>
-        <button
-          onclick="copyQrLink()"
-          class="mt-2 w-full py-2.5 bg-brand-50 hover:bg-brand-100 text-brand-700 text-xs font-bold rounded-xl transition-all"
-        >
-          <i class="fa-solid fa-link mr-1"></i>
-          <span id="qr-copy-text">Copiar enlace</span>
-        </button>
+
+        <p class="mt-4 text-center text-[10px] leading-relaxed text-slate-400">
+          Al entrar aceptas las normas de convivencia del grupo. Los datos de
+          adopción no se comparten sin autorización.
+        </p>
       </div>
     </div>
 
     <!-- FOOTER -->
-    <footer
-      class="bg-slate-900 text-white py-12 border-t border-slate-800 mt-12"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          class="flex flex-col sm:flex-row justify-between items-center gap-6"
-        >
-          <div class="flex items-center space-x-3">
-            <div
-              class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center text-white"
-            >
-              <i class="fa-solid fa-paw text-xl"></i>
-            </div>
-            <div>
-              <span class="text-xl font-bold tracking-tight">AdoptaMatch</span>
-              <span class="block text-[11px] text-slate-400"
-                >Innovación Social para la Tenencia Responsable</span
+    <footer class="mt-16 border-t border-slate-800 bg-slate-950 text-slate-300">
+      <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <span
+                class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-tr from-brand-600 to-teal-400 text-white"
               >
+                <i class="fa-solid fa-paw text-xl"></i>
+              </span>
+              <div>
+                <p class="text-xl font-extrabold tracking-tight text-white">
+                  AdoptaMatch
+                </p>
+                <p
+                  class="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500"
+                >
+                  Adopción responsable
+                </p>
+              </div>
             </div>
+            <p class="max-w-sm text-xs leading-relaxed text-slate-400">
+              Plataforma de innovación social para la tenencia responsable.
+              Conectamos mascotas rescatadas con familias compatibles y con
+              seguimiento veterinario.
+            </p>
+            <a
+              href="https://chat.whatsapp.com/HVwzIsaq2sB7siZdIWhIX7?s=cl&p=a&iam=2"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-sm btn-whatsapp"
+            >
+              <i class="fa-brands fa-whatsapp"></i>Grupo de WhatsApp
+            </a>
           </div>
-          <p class="text-xs text-slate-500">
+
+          <div>
+            <p class="footer-title">Explorar</p>
+            <ul class="footer-links">
+              <li>
+                <a
+                  href="#inicio"
+                  onclick="
+                    switchTab('inicio');
+                    return false;
+                  "
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#casos-reales"
+                  onclick="
+                    switchTab('casos-reales');
+                    return false;
+                  "
+                  >Casos reales</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#match"
+                  onclick="
+                    switchTab('match');
+                    return false;
+                  "
+                  >Test match</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#apadrinar"
+                  onclick="
+                    switchTab('apadrinar');
+                    return false;
+                  "
+                  >Apadrinar</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="footer-title">Servicios</p>
+            <ul class="footer-links">
+              <li>
+                <a
+                  href="#hogar-temporal"
+                  onclick="
+                    switchTab('hogar-temporal');
+                    return false;
+                  "
+                  >Hogar temporal</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#veterinario"
+                  onclick="
+                    switchTab('veterinario');
+                    return false;
+                  "
+                  >Carnet veterinario</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#financiamiento"
+                  onclick="
+                    switchTab('financiamiento');
+                    return false;
+                  "
+                  >Financiamiento</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#educacion"
+                  onclick="
+                    switchTab('educacion');
+                    return false;
+                  "
+                  >Educación</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="footer-title">Comunidad</p>
+            <ul class="footer-links">
+              <li>
+                <a
+                  href="#proyecto"
+                  onclick="
+                    switchTab('proyecto');
+                    return false;
+                  "
+                  >El proyecto</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://chat.whatsapp.com/HVwzIsaq2sB7siZdIWhIX7?s=cl&p=a&iam=2"
+                  target="_blank"
+                  rel="noopener"
+                  >Grupo de WhatsApp</a
+                >
+              </li>
+              <li><button onclick="openQrModal()">Código QR</button></li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="mt-12 flex flex-col items-center justify-between gap-3 border-t border-slate-800 pt-6 sm:flex-row"
+        >
+          <p class="text-[11px] text-slate-500">
             © 2026 AdoptaMatch. Todos los derechos reservados.
+          </p>
+          <p class="text-[11px] text-slate-500">
+            Hecho con foco en el bienestar animal.
           </p>
         </div>
       </div>
@@ -2329,14 +2814,17 @@
     <!-- REAL CASE DETAIL & ADOPTION WINDOW MODAL -->
     <div
       id="real-case-modal"
-      class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
     >
       <div
         class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-slate-100 overflow-hidden my-8 relative"
       >
         <button
           onclick="closeRealCaseModal()"
-          class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/90 text-slate-700 hover:bg-rose-500 hover:text-white flex items-center justify-center font-bold text-sm shadow-md transition-all"
+          class="modal-close"
+          aria-label="Cerrar"
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -2370,7 +2858,7 @@
               <div>
                 <span
                   id="rc-modal-rescuer"
-                  class="text-[10px] font-extrabold uppercase tracking-wider text-teal-600 block"
+                  class="text-[10px] font-extrabold uppercase tracking-wider text-teal-600 block pr-12"
                   >Rescatado por: Fundación Huellas</span
                 >
                 <h3
@@ -2423,6 +2911,28 @@
               </div>
             </div>
 
+            <!-- QR del grupo de WhatsApp dentro de la ficha -->
+            <div
+              class="space-y-2 rounded-2xl border border-slate-700 bg-[#111b21] p-3.5 text-center text-white"
+            >
+              <p class="text-[11px] font-extrabold text-emerald-400">
+                ¿Te interesa adoptar a
+                <span id="rc-modal-name-inline">esta mascota</span>?
+              </p>
+              <img
+                id="modal-whatsapp-qr"
+                src="img/qr-whatsapp.png"
+                alt="QR del grupo de WhatsApp de AdoptaMatch"
+                class="mx-auto h-36 w-36 rounded-xl object-contain"
+              />
+              <p class="text-[10px] leading-snug text-slate-300">
+                Escanea el QR, únete al grupo de WhatsApp,
+                <strong class="text-white"
+                  >envía su foto y pregunta por él/ella</strong
+                >.
+              </p>
+            </div>
+
             <!-- Direct Adoption Form -->
             <form
               onsubmit="submitRealCaseAdoption(event)"
@@ -2460,14 +2970,17 @@
     <!-- PUBLISH NEW REAL CASE MODAL -->
     <div
       id="publish-rc-modal"
-      class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
     >
       <div
         class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-100 p-6 relative"
       >
         <button
           onclick="closePublishRealCaseModal()"
-          class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold text-xs"
+          class="modal-close"
+          aria-label="Cerrar"
         >
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -2563,7 +3076,7 @@
             <button
               type="button"
               onclick="closePublishRealCaseModal()"
-              class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl"
+              class="btn btn-md btn-outline w-1/2"
             >
               Cancelar
             </button>
