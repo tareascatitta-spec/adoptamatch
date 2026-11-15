@@ -41,28 +41,28 @@
             </div>
             <div>
               <span
-                class="text-xl sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-brand-700 via-teal-600 to-pet-orange bg-clip-text text-transparent"
+                class="text-xl 3xl:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-brand-700 via-teal-600 to-pet-orange bg-clip-text text-transparent"
                 >AdoptaMatch</span
               >
               <span
-                class="block text-[10px] font-semibold tracking-widest text-slate-400 uppercase -mt-1"
+                class="hidden 3xl:block text-[10px] font-semibold tracking-widest text-slate-400 uppercase -mt-1 whitespace-nowrap"
                 >Plataforma de Adopción Responsable</span
               >
             </div>
           </div>
 
           <!-- Navigation Desktop -->
-          <nav class="hidden lg:flex items-center space-x-1">
+          <nav class="hidden xl:flex items-center space-x-0.5">
             <button
               onclick="switchTab('inicio')"
-              class="nav-btn px-4 py-2 rounded-xl text-sm font-medium transition-all text-brand-600 bg-brand-50"
+              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap transition-all text-brand-600 bg-brand-50"
               id="nav-inicio"
             >
               Inicio
             </button>
             <button
               onclick="switchTab('casos-reales')"
-              class="nav-btn px-3 py-2 rounded-xl text-sm font-bold text-rose-600 bg-rose-50 hover:bg-rose-100 transition-all flex items-center gap-1.5"
+              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-bold whitespace-nowrap text-rose-600 bg-rose-50 hover:bg-rose-100 transition-all flex items-center gap-1.5"
               id="nav-casos-reales"
             >
               <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span
@@ -70,49 +70,49 @@
             </button>
             <button
               onclick="switchTab('match')"
-              class="nav-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
               id="nav-match"
             >
               Test Match
             </button>
             <button
               onclick="switchTab('apadrinar')"
-              class="nav-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
               id="nav-apadrinar"
             >
               Apadrinar
             </button>
             <button
               onclick="switchTab('hogar-temporal')"
-              class="nav-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
               id="nav-hogar-temporal"
             >
               Hogar Temporal
             </button>
             <button
               onclick="switchTab('veterinario')"
-              class="nav-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
               id="nav-veterinario"
             >
               Carnet Vet
             </button>
             <button
               onclick="switchTab('financiamiento')"
-              class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
               id="nav-financiamiento"
             >
               Financiamiento
             </button>
             <button
               onclick="switchTab('educacion')"
-              class="nav-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
               id="nav-educacion"
             >
               Educación
             </button>
             <button
               onclick="switchTab('proyecto')"
-              class="nav-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
+              class="nav-btn px-2.5 py-2 rounded-xl text-[13px] 3xl:text-sm font-medium whitespace-nowrap text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
               id="nav-proyecto"
             >
               El Proyecto
@@ -120,7 +120,7 @@
           </nav>
 
           <!-- Action Button -->
-          <div class="hidden sm:flex items-center space-x-3">
+          <div class="hidden sm:flex items-center space-x-3 ml-auto">
             <button
               onclick="openQrModal()"
               class="w-11 h-11 flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-all"
@@ -131,15 +131,15 @@
             </button>
             <button
               onclick="switchTab('match')"
-              class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-teal-500 hover:from-brand-700 hover:to-teal-600 text-white font-semibold text-sm shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              class="px-3.5 3xl:px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-teal-500 hover:from-brand-700 hover:to-teal-600 text-white font-semibold text-sm whitespace-nowrap shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
             >
-              <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Encontrar Mi
-              Match
+              <i class="fa-solid fa-wand-magic-sparkles mr-2"></i
+              ><span class="hidden 3xl:inline">Encontrar </span>Mi Match
             </button>
           </div>
 
           <!-- Mobile Menu Button -->
-          <div class="flex lg:hidden">
+          <div class="flex xl:hidden">
             <button
               id="mobile-menu-btn"
               onclick="toggleMobileMenu()"
@@ -154,7 +154,7 @@
       <!-- Mobile Dropdown -->
       <div
         id="mobile-menu"
-        class="hidden lg:hidden border-t border-slate-100 bg-white px-4 pt-2 pb-4 space-y-2"
+        class="hidden xl:hidden border-t border-slate-100 bg-white px-4 pt-2 pb-4 space-y-2"
       >
         <button
           onclick="switchTab('inicio')"
