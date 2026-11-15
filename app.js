@@ -49,7 +49,7 @@ const PETS_DATA = [
     energy: "Media",
     housing: "parcela",
     image:
-      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=600",
+      "img/rocky.jpg",
     description:
       "Vivió más de dos años vagando en carreteras periurbanas evitando peligros vehiculares. Al ingresar al refugio mostró un carácter sereno y una profunda devoción por el contacto humano.",
     health: "Esterilizado, esquema sanitario al día.",
@@ -125,7 +125,7 @@ const PETS_DATA = [
     energy: "Alta",
     housing: "parcela",
     image:
-      "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&q=80&w=600",
+      "img/bella.jpg",
     description:
       "Rescatada de una quebrada con una fractura en su pata posterior. Mediante cirugía y fisioterapia veterinaria recuperó la movilidad sin secuelas para correr con libertad.",
     health: "Esterilizada, de alta médica definitiva.",
@@ -201,7 +201,7 @@ const PETS_DATA = [
     energy: "Alta",
     housing: "casa_pequena",
     image:
-      "https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&q=80&w=600",
+      "img/jack.jpg",
     description:
       "Hallado amarrado en las afueras de un taller. Su rescate permitió descubrir a un animal lleno de vitalidad, sin resentimientos y deseoso de actividad física diaria.",
     health: "Esterilizado, vacunas vigentes.",
@@ -296,7 +296,7 @@ const PETS_DATA = [
     energy: "Alta",
     housing: "parcela",
     image:
-      "https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&q=80&w=600",
+      "img/maya.jpg",
     description:
       "Rescatada de un canal de regadío en una situación crítica. Su rápida recuperación evidenció su gran fuerza física e inteligencia sobresaliente.",
     health: "Esterilizada, vacunación completa.",
@@ -372,7 +372,7 @@ const PETS_DATA = [
     energy: "Media",
     housing: "parcela",
     image:
-      "https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&q=80&w=600",
+      "img/kaiser.jpg",
     description:
       "Superó condiciones desfavorables de desamparo en obras en construcción. Demuestra ser muy agradecido, firme y respetuoso con sus tutores.",
     health: "Esterilizado y desparasitado.",
