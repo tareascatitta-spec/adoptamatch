@@ -61,6 +61,14 @@
               Inicio
             </button>
             <button
+              onclick="switchTab('casos-reales')"
+              class="nav-btn px-3 py-2 rounded-xl text-sm font-bold text-rose-600 bg-rose-50 hover:bg-rose-100 transition-all flex items-center gap-1.5"
+              id="nav-casos-reales"
+            >
+              <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span
+              >Casos Reales
+            </button>
+            <button
               onclick="switchTab('match')"
               class="nav-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-50 transition-all"
               id="nav-match"
@@ -155,6 +163,12 @@
           Inicio & Mascotas
         </button>
         <button
+          onclick="switchTab('casos-reales')"
+          class="w-full text-left px-4 py-2.5 rounded-xl font-bold text-rose-600 bg-rose-50 hover:bg-rose-100"
+        >
+          Casos Reales en Busca de Hogar
+        </button>
+        <button
           onclick="switchTab('match')"
           class="w-full text-left px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600"
         >
@@ -236,6 +250,13 @@
               </p>
               <div class="pt-2 flex flex-wrap gap-3">
                 <button
+                  onclick="switchTab('casos-reales')"
+                  class="px-6 py-3.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-rose-500/30 transition-all flex items-center gap-2"
+                >
+                  <i class="fa-solid fa-house-chimney-medical"></i>Ver Casos
+                  Reales en Busca de Hogar
+                </button>
+                <button
                   onclick="switchTab('match')"
                   class="px-6 py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-brand-500/30 transition-all"
                 >
@@ -307,6 +328,91 @@
           <div
             id="pets-grid"
             class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CASOS REALES EN BUSCA DE HOGAR VIEW ================= -->
+      <section
+        id="view-casos-reales"
+        class="tab-content hidden py-12 bg-slate-50"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          <!-- Header Banner -->
+          <div
+            class="bg-gradient-to-r from-rose-900 via-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            <div class="space-y-3 max-w-2xl">
+              <span
+                class="px-3 py-1 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-full text-xs font-bold uppercase tracking-wider inline-block"
+              >
+                Rescates Verificados • Adopción Directa
+              </span>
+              <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+                Mascotas Reales en Busca de Hogar
+              </h2>
+              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                Estos animales fueron rescatados recientemente en comunas de la
+                Región Metropolitana y esperan una familia definitiva. Cada caso
+                cuenta con respaldo de rescatistas independientes y seguimiento
+                veterinario.
+              </p>
+            </div>
+            <button
+              onclick="openPublishRealCaseModal()"
+              class="shrink-0 px-6 py-4 bg-white hover:bg-slate-100 text-rose-700 font-extrabold text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center gap-2"
+            >
+              <i class="fa-solid fa-plus-circle"></i>Publicar un Rescate Real
+            </button>
+          </div>
+
+          <!-- Filter Bar -->
+          <div
+            class="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm"
+          >
+            <div class="flex flex-wrap items-center gap-2">
+              <button
+                onclick="filterRealCases('all')"
+                id="rc-filter-all"
+                class="rc-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-rose-600 text-white"
+              >
+                Todos los Casos
+              </button>
+              <button
+                onclick="filterRealCases('urgente')"
+                id="rc-filter-urgente"
+                class="rc-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200"
+              >
+                Adopción Urgente
+              </button>
+              <button
+                onclick="filterRealCases('perro')"
+                id="rc-filter-perro"
+                class="rc-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200"
+              >
+                Solo Perros
+              </button>
+              <button
+                onclick="filterRealCases('gato')"
+                id="rc-filter-gato"
+                class="rc-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200"
+              >
+                Solo Gatos
+              </button>
+            </div>
+            <span
+              class="text-xs font-semibold text-slate-500"
+              id="real-cases-counter"
+              >Mostrando 6 casos activos</span
+            >
+          </div>
+
+          <!-- Real Cases Grid -->
+          <div
+            id="real-cases-grid"
+            class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <!-- Populated dynamically -->
           </div>
@@ -2219,6 +2325,274 @@
         </div>
       </div>
     </footer>
+
+    <!-- REAL CASE DETAIL & ADOPTION WINDOW MODAL -->
+    <div
+      id="real-case-modal"
+      class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto"
+    >
+      <div
+        class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-slate-100 overflow-hidden my-8 relative"
+      >
+        <button
+          onclick="closeRealCaseModal()"
+          class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/90 text-slate-700 hover:bg-rose-500 hover:text-white flex items-center justify-center font-bold text-sm shadow-md transition-all"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="grid sm:grid-cols-2">
+          <div class="relative h-64 sm:h-full bg-slate-200">
+            <img
+              id="rc-modal-img"
+              src=""
+              alt="Mascota"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5"
+            >
+              <span
+                id="rc-modal-badge"
+                class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-rose-600 text-white shadow"
+                >Urgente</span
+              >
+              <span
+                id="rc-modal-location"
+                class="px-3 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur"
+                ><i class="fa-solid fa-location-dot mr-1"></i>Talagante</span
+              >
+            </div>
+          </div>
+
+          <div class="p-6 space-y-4 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div>
+                <span
+                  id="rc-modal-rescuer"
+                  class="text-[10px] font-extrabold uppercase tracking-wider text-teal-600 block"
+                  >Rescatado por: Fundación Huellas</span
+                >
+                <h3
+                  id="rc-modal-name"
+                  class="text-2xl font-black text-slate-900"
+                >
+                  Canela
+                </h3>
+                <p
+                  id="rc-modal-meta"
+                  class="text-xs font-semibold text-slate-500"
+                >
+                  Hembra • 1.5 años • Tamaño Mediano
+                </p>
+              </div>
+
+              <div
+                class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1.5 text-xs"
+              >
+                <span class="font-bold text-slate-800 block"
+                  >Historia del Rescate:</span
+                >
+                <p
+                  id="rc-modal-story"
+                  class="text-slate-600 leading-relaxed text-[11px]"
+                ></p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 text-[11px]">
+                <div
+                  class="p-2.5 bg-emerald-50 rounded-xl border border-emerald-100"
+                >
+                  <span class="text-emerald-700 font-bold block"
+                    >Estado Sanitario</span
+                  >
+                  <span id="rc-modal-health" class="text-slate-700 font-medium"
+                    >Vacunada y Esterilizada</span
+                  >
+                </div>
+                <div
+                  class="p-2.5 bg-amber-50 rounded-xl border border-amber-100"
+                >
+                  <span class="text-amber-700 font-bold block"
+                    >Convivencia</span
+                  >
+                  <span id="rc-modal-social" class="text-slate-700 font-medium"
+                    >Apta niños y perros</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Direct Adoption Form -->
+            <form
+              onsubmit="submitRealCaseAdoption(event)"
+              class="pt-3 border-t border-slate-100 space-y-2.5 text-xs"
+            >
+              <p class="font-extrabold text-slate-900">
+                Solicitar Entrevista de Adopción:
+              </p>
+              <input
+                type="text"
+                id="rc-adopter-name"
+                required
+                placeholder="Tu Nombre Completo"
+                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-rose-500"
+              />
+              <input
+                type="tel"
+                id="rc-adopter-phone"
+                required
+                placeholder="Teléfono / WhatsApp (+569...)"
+                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-rose-500"
+              />
+              <button
+                type="submit"
+                class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-extrabold rounded-xl shadow-lg shadow-rose-500/25 transition-all"
+              >
+                Postular para Adoptar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PUBLISH NEW REAL CASE MODAL -->
+    <div
+      id="publish-rc-modal"
+      class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-100 p-6 relative"
+      >
+        <button
+          onclick="closePublishRealCaseModal()"
+          class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold text-xs"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h3 class="text-xl font-black text-slate-900 mb-1">
+          Publicar Caso Real de Adopción
+        </h3>
+        <p class="text-xs text-slate-500 mb-4">
+          Registra una mascota rescatada que necesite hogar definitivo.
+        </p>
+
+        <form onsubmit="addNewRealCase(event)" class="space-y-3 text-xs">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Nombre:</label>
+              <input
+                type="text"
+                id="new-rc-name"
+                required
+                placeholder="Ej: Pelusa"
+                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-rose-500"
+              />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1"
+                >Especie:</label
+              >
+              <select
+                id="new-rc-type"
+                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none"
+              >
+                <option value="perro">Perro</option>
+                <option value="gato">Gato</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1"
+                >Comuna / Ubicación:</label
+              >
+              <input
+                type="text"
+                id="new-rc-location"
+                required
+                placeholder="Ej: Talagante"
+                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none"
+              />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1"
+                >Edad y Tamaño:</label
+              >
+              <input
+                type="text"
+                id="new-rc-meta"
+                required
+                placeholder="Ej: 8 meses • Mediano"
+                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none"
+              />
+            </div>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1"
+              >Rescatista o Agrupación:</label
+            >
+            <input
+              type="text"
+              id="new-rc-rescuer"
+              required
+              placeholder="Ej: Rescate Animal Isla de Maipo"
+              class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none"
+            />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1"
+              >Historia del Rescate y Necesidades:</label
+            >
+            <textarea
+              id="new-rc-story"
+              rows="3"
+              required
+              placeholder="Describe cómo fue rescatado y qué tipo de familia necesita..."
+              class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none"
+            ></textarea>
+          </div>
+          <div class="flex items-center gap-2 pt-1">
+            <input type="checkbox" id="new-rc-urgent" class="accent-rose-600" />
+            <label for="new-rc-urgent" class="font-bold text-rose-600"
+              >Marcar como Adopción Urgente (Sin hogar temporal)</label
+            >
+          </div>
+          <div class="pt-3 flex gap-2">
+            <button
+              type="button"
+              onclick="closePublishRealCaseModal()"
+              class="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl"
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              class="w-1/2 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl shadow-md"
+            >
+              Publicar Caso
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- CUSTOM NOTIFICATION TOAST (Replaces alert) -->
+    <div
+      id="custom-toast"
+      class="fixed top-24 right-4 z-50 bg-slate-900 text-white px-5 py-4 rounded-2xl shadow-2xl border border-slate-700 max-w-sm transform translate-x-[120%] transition-transform duration-300 flex items-start gap-3"
+    >
+      <div
+        class="w-8 h-8 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center shrink-0 mt-0.5"
+      >
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <div class="text-xs space-y-1">
+        <h4 id="toast-title" class="font-extrabold text-white">Notificación</h4>
+        <p id="toast-message" class="text-slate-300 leading-relaxed"></p>
+      </div>
+    </div>
 
     <!-- SCRIPT DE LÓGICA COMPLETA -->
     <script src="app.js"></script>

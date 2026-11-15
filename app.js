@@ -48,8 +48,7 @@ const PETS_DATA = [
     gender: "Macho",
     energy: "Media",
     housing: "parcela",
-    image:
-      "img/rocky.jpg",
+    image: "img/rocky.jpg",
     description:
       "Vivió más de dos años vagando en carreteras periurbanas evitando peligros vehiculares. Al ingresar al refugio mostró un carácter sereno y una profunda devoción por el contacto humano.",
     health: "Esterilizado, esquema sanitario al día.",
@@ -124,8 +123,7 @@ const PETS_DATA = [
     gender: "Hembra",
     energy: "Alta",
     housing: "parcela",
-    image:
-      "img/bella.jpg",
+    image: "img/bella.jpg",
     description:
       "Rescatada de una quebrada con una fractura en su pata posterior. Mediante cirugía y fisioterapia veterinaria recuperó la movilidad sin secuelas para correr con libertad.",
     health: "Esterilizada, de alta médica definitiva.",
@@ -200,8 +198,7 @@ const PETS_DATA = [
     gender: "Macho",
     energy: "Alta",
     housing: "casa_pequena",
-    image:
-      "img/jack.jpg",
+    image: "img/jack.jpg",
     description:
       "Hallado amarrado en las afueras de un taller. Su rescate permitió descubrir a un animal lleno de vitalidad, sin resentimientos y deseoso de actividad física diaria.",
     health: "Esterilizado, vacunas vigentes.",
@@ -295,8 +292,7 @@ const PETS_DATA = [
     gender: "Hembra",
     energy: "Alta",
     housing: "parcela",
-    image:
-      "img/maya.jpg",
+    image: "img/maya.jpg",
     description:
       "Rescatada de un canal de regadío en una situación crítica. Su rápida recuperación evidenció su gran fuerza física e inteligencia sobresaliente.",
     health: "Esterilizada, vacunación completa.",
@@ -371,8 +367,7 @@ const PETS_DATA = [
     gender: "Macho",
     energy: "Media",
     housing: "parcela",
-    image:
-      "img/kaiser.jpg",
+    image: "img/kaiser.jpg",
     description:
       "Superó condiciones desfavorables de desamparo en obras en construcción. Demuestra ser muy agradecido, firme y respetuoso con sus tutores.",
     health: "Esterilizado y desparasitado.",
@@ -646,12 +641,277 @@ const MYTHS_DATA = [
 
 let currentMythIndex = 0;
 
+// CUSTOM TOAST HELPER (No alert)
+function showToast(title, message) {
+  const toast = document.getElementById("custom-toast");
+  document.getElementById("toast-title").textContent = title;
+  document.getElementById("toast-message").textContent = message;
+  toast.classList.remove("translate-x-[120%]");
+  setTimeout(() => {
+    toast.classList.add("translate-x-[120%]");
+  }, 4500);
+}
+
+// REAL CASES DATABASE (Mascotas Reales en Busca de Hogar)
+let REAL_CASES_DATA = [
+  {
+    id: 101,
+    name: "Canela",
+    type: "perro",
+    urgent: true,
+    location: "Talagante",
+    meta: "Hembra • 1.5 años • Mediana",
+    rescuer: "Agrupación Patitas del Maipo",
+    health: "Esterilizada, chip y vacunas al día",
+    social: "Excelente con niños y otros perros",
+    daysWaiting: 42,
+    image:
+      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=700",
+    story:
+      "Canela fue encontrada desorientada cerca del río Mapocho tras una lluvia intensa. Estuvo en recuperación nutricional durante un mes y hoy está completamente sana. Su hogar temporal vence esta semana y necesita urgente una familia definitiva.",
+  },
+  {
+    id: 102,
+    name: "Bigotes",
+    type: "gato",
+    urgent: false,
+    location: "Peñaflor",
+    meta: "Macho • 2 años • Tamaño Pequeño",
+    rescuer: "Rescate Felino RM",
+    health: "Castrado, test Retrovirosis negativo",
+    social: "Ideal departamento, muy tranquilo",
+    daysWaiting: 28,
+    image:
+      "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&q=80&w=700",
+    story:
+      "Rescatado de un techo industrial donde llevaba semanas buscando alimento. Es sumamente dócil, usa su caja sanitaria perfectamente y disfruta dormir cerca de sus tutores.",
+  },
+  {
+    id: 103,
+    name: "Negro",
+    type: "perro",
+    urgent: true,
+    location: "El Monte",
+    meta: "Macho • 3 años • Grande",
+    rescuer: "Red Voluntaria El Monte",
+    health: "Castrado, desparasitado y con microchip",
+    social: "Fiel guardián, ideal casa con patio",
+    daysWaiting: 65,
+    image:
+      "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=700",
+    story:
+      "Negro fue abandonado tras el cierre de una bodega. Es un perro noble, obediente y muy agradecido que busca un hogar con espacio donde sentirse parte de la familia.",
+  },
+  {
+    id: 104,
+    name: "Copito",
+    type: "gato",
+    urgent: true,
+    location: "Isla de Maipo",
+    meta: "Hembra • 7 meses • Pequeña",
+    rescuer: "Rescatista Camila V.",
+    health: "Esterilizada, primeras vacunas listas",
+    social: "Juguetona, convive con gatos",
+    daysWaiting: 19,
+    image:
+      "https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&q=80&w=700",
+    story:
+      "Rescatada junto a su camada en un predio agrícola. Es la única que aún espera familia. Muy cariñosa, ronronea apenas la toman en brazos.",
+  },
+  {
+    id: 105,
+    name: "Tango",
+    type: "perro",
+    urgent: false,
+    location: "Padre Hurtado",
+    meta: "Macho • 10 meses • Mediano",
+    rescuer: "Fundación Huellas Libres",
+    health: "Vacunas completas y castrado",
+    social: "Activo, ideal para caminatas",
+    daysWaiting: 34,
+    image:
+      "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=700",
+    story:
+      "Tango fue rescatado de la carretera siendo cachorro. Tiene mucha energía positiva, aprende trucos básicos con premios y se lleva bien con mascotas equilibradas.",
+  },
+  {
+    id: 106,
+    name: "Pelusa",
+    type: "gato",
+    urgent: false,
+    location: "Talagante",
+    meta: "Hembra • 4 años • Pequeña",
+    rescuer: "Veterinaria Solidaria",
+    health: "Esterilizada, perfil bioquímico sano",
+    social: "Hogar sin perros, ambiente calmado",
+    daysWaiting: 51,
+    image:
+      "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&q=80&w=700",
+    story:
+      "Su antigua tutora falleció y quedó sin familia. Pelusa busca una segunda oportunidad en un hogar tranquilo donde le brinden cariño y estabilidad.",
+  },
+];
+
+let currentRealCaseFilter = "all";
+
+function renderRealCases() {
+  const grid = document.getElementById("real-cases-grid");
+  const counter = document.getElementById("real-cases-counter");
+  if (!grid) return;
+
+  const filtered = REAL_CASES_DATA.filter((item) => {
+    if (currentRealCaseFilter === "urgente") return item.urgent;
+    if (currentRealCaseFilter === "perro") return item.type === "perro";
+    if (currentRealCaseFilter === "gato") return item.type === "gato";
+    return true;
+  });
+
+  if (counter) {
+    counter.textContent = `Mostrando ${filtered.length} caso${filtered.length === 1 ? "" : "s"} activo${filtered.length === 1 ? "" : "s"}`;
+  }
+
+  grid.innerHTML = filtered
+    .map(
+      (c) => `
+                <div class="bg-white rounded-3xl overflow-hidden border ${c.urgent ? "border-rose-200 ring-2 ring-rose-500/10" : "border-slate-100"} shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-60 overflow-hidden bg-slate-200">
+                            <img src="${c.image}" alt="${c.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                                ${c.urgent ? `<span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-rose-600 text-white shadow-md">Urgente</span>` : `<span class="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-teal-600 text-white shadow-md">En Adopción</span>`}
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-slate-900/75 text-white backdrop-blur">
+                                    <i class="fa-solid fa-location-dot mr-1 text-rose-400"></i>${c.location}
+                                </span>
+                            </div>
+                            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur text-[10px] font-bold text-slate-700">
+                                ${c.daysWaiting} días esperando hogar
+                            </span>
+                        </div>
+
+                        <div class="p-6 space-y-3">
+                            <div>
+                                <span class="text-[10px] font-extrabold uppercase tracking-wider text-teal-600">${c.rescuer}</span>
+                                <h3 class="text-2xl font-black text-slate-900">${c.name}</h3>
+                                <p class="text-xs font-semibold text-slate-400">${c.meta}</p>
+                            </div>
+
+                            <p class="text-xs text-slate-600 leading-relaxed line-clamp-3">${c.story}</p>
+
+                            <div class="pt-2 flex flex-wrap gap-2 text-[11px]">
+                                <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 font-semibold"><i class="fa-solid fa-shield-heart mr-1"></i>${c.health}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <button onclick="openRealCaseModal(${c.id})" class="w-full py-3.5 rounded-2xl ${c.urgent ? "bg-rose-600 hover:bg-rose-700 shadow-rose-500/20" : "bg-slate-900 hover:bg-slate-800"} text-white font-extrabold text-xs shadow-lg transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-up-right-from-square"></i>Abrir Ventana de Adopción
+                        </button>
+                    </div>
+                </div>
+            `,
+    )
+    .join("");
+}
+
+function filterRealCases(filter) {
+  currentRealCaseFilter = filter;
+  document.querySelectorAll(".rc-filter-btn").forEach((btn) => {
+    btn.classList.remove("bg-rose-600", "text-white");
+    btn.classList.add("bg-slate-100", "text-slate-600");
+  });
+  const active = document.getElementById(`rc-filter-${filter}`);
+  if (active) {
+    active.classList.add("bg-rose-600", "text-white");
+    active.classList.remove("bg-slate-100", "text-slate-600");
+  }
+  renderRealCases();
+}
+
+function openRealCaseModal(id) {
+  const c = REAL_CASES_DATA.find((item) => item.id === id);
+  if (!c) return;
+
+  document.getElementById("rc-modal-img").src = c.image;
+  document.getElementById("rc-modal-name").textContent = c.name;
+  document.getElementById("rc-modal-meta").textContent = c.meta;
+  document.getElementById("rc-modal-rescuer").textContent =
+    `Rescatado por: ${c.rescuer}`;
+  document.getElementById("rc-modal-story").textContent = c.story;
+  document.getElementById("rc-modal-health").textContent = c.health;
+  document.getElementById("rc-modal-social").textContent = c.social;
+  document.getElementById("rc-modal-location").innerHTML =
+    `<i class="fa-solid fa-location-dot mr-1"></i>${c.location}`;
+
+  const badge = document.getElementById("rc-modal-badge");
+  badge.textContent = c.urgent ? "Adopción Urgente" : "Rescate Verificado";
+  badge.className = `px-3 py-1 rounded-full text-[10px] font-extrabold uppercase text-white shadow ${c.urgent ? "bg-rose-600" : "bg-teal-600"}`;
+
+  document.getElementById("real-case-modal").classList.remove("hidden");
+}
+
+function closeRealCaseModal() {
+  document.getElementById("real-case-modal").classList.add("hidden");
+}
+
+function submitRealCaseAdoption(e) {
+  e.preventDefault();
+  const petName = document.getElementById("rc-modal-name").textContent;
+  const adopter = document.getElementById("rc-adopter-name").value;
+  closeRealCaseModal();
+  e.target.reset();
+  showToast(
+    "Postulación Enviada",
+    `Hola ${adopter}, tu solicitud para adoptar a ${petName} fue enviada directamente a su rescatista.`,
+  );
+}
+
+function openPublishRealCaseModal() {
+  document.getElementById("publish-rc-modal").classList.remove("hidden");
+}
+
+function closePublishRealCaseModal() {
+  document.getElementById("publish-rc-modal").classList.add("hidden");
+}
+
+function addNewRealCase(e) {
+  e.preventDefault();
+  const type = document.getElementById("new-rc-type").value;
+  const newCase = {
+    id: Date.now(),
+    name: document.getElementById("new-rc-name").value,
+    type: type,
+    urgent: document.getElementById("new-rc-urgent").checked,
+    location: document.getElementById("new-rc-location").value,
+    meta: document.getElementById("new-rc-meta").value,
+    rescuer: document.getElementById("new-rc-rescuer").value,
+    health: "Evaluación veterinaria inicial",
+    social: "En proceso de adaptación",
+    daysWaiting: 1,
+    image:
+      type === "perro"
+        ? "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&q=80&w=700"
+        : "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=700",
+    story: document.getElementById("new-rc-story").value,
+  };
+
+  REAL_CASES_DATA.unshift(newCase);
+  renderRealCases();
+  closePublishRealCaseModal();
+  e.target.reset();
+  showToast(
+    "Caso Publicado",
+    `${newCase.name} ya aparece en el listado de Mascotas Reales en Busca de Hogar.`,
+  );
+}
+
 // INITIALIZATION
 document.addEventListener("DOMContentLoaded", () => {
   initVetRecords();
   populateVetPetSelect();
   populateSponsorPetSelect();
   renderPets();
+  renderRealCases();
   updateVetCard();
   renderArticles();
   loadMythQuestion();
