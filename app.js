@@ -917,6 +917,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateVetCard();
   renderArticles();
   loadMythQuestion();
+  initHeroCarousel();
 
   // Enlaces profundos: /#casos-reales abre esa vista directamente.
   const initialTab = window.location.hash.replace("#", "");
@@ -926,6 +927,66 @@ document.addEventListener("DOMContentLoaded", () => {
     switchTab("inicio", { skipHash: true, skipScroll: true });
   }
 });
+
+// ================= CARRUSEL DEL HERO (ANTES Y DESPUÉS) =================
+let heroCarouselIndex = 0;
+let heroCarouselTimer = null;
+const HERO_CAROUSEL_INTERVAL = 6500;
+
+function heroCarouselSlides() {
+  return Array.from(document.querySelectorAll("#hero-carousel .hero-slide"));
+}
+
+function heroCarouselGo(index) {
+  const slides = heroCarouselSlides();
+  if (!slides.length) return;
+  heroCarouselIndex = (index + slides.length) % slides.length;
+  slides.forEach((slide, i) => {
+    const active = i === heroCarouselIndex;
+    slide.classList.toggle("is-active", active);
+    slide.setAttribute("aria-hidden", String(!active));
+  });
+  const counter = document.getElementById("hero-carousel-counter");
+  if (counter) {
+    counter.textContent = `${heroCarouselIndex + 1} / ${slides.length}`;
+  }
+}
+
+function heroCarouselNext() {
+  heroCarouselGo(heroCarouselIndex + 1);
+  heroCarouselRestart();
+}
+
+function heroCarouselPrev() {
+  heroCarouselGo(heroCarouselIndex - 1);
+  heroCarouselRestart();
+}
+
+function heroCarouselRestart() {
+  if (heroCarouselTimer) clearInterval(heroCarouselTimer);
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  if (reduceMotion) return;
+  heroCarouselTimer = setInterval(() => {
+    heroCarouselGo(heroCarouselIndex + 1);
+  }, HERO_CAROUSEL_INTERVAL);
+}
+
+function initHeroCarousel() {
+  const carousel = document.getElementById("hero-carousel");
+  if (!carousel) return;
+  heroCarouselGo(0);
+  heroCarouselRestart();
+  carousel.addEventListener("mouseenter", () => {
+    if (heroCarouselTimer) clearInterval(heroCarouselTimer);
+  });
+  carousel.addEventListener("mouseleave", heroCarouselRestart);
+  carousel.addEventListener("focusin", () => {
+    if (heroCarouselTimer) clearInterval(heroCarouselTimer);
+  });
+  carousel.addEventListener("focusout", heroCarouselRestart);
+}
 
 function resetPetsFilters() {
   ["filter-type", "filter-size", "filter-age"].forEach((id) => {

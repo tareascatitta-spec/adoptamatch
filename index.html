@@ -338,50 +338,94 @@
               </div>
 
               <div class="hero-visual">
-                <div class="hero-photo">
-                  <img
-                    src="img/rocky.jpg"
-                    alt="Rocky, perro rescatado disponible para adopción"
-                    loading="eager"
-                  />
-                  <div class="absolute bottom-4 left-4 z-[2] text-white">
-                    <p class="text-lg font-black leading-tight">Rocky</p>
-                    <p class="text-[11px] font-semibold text-white/80">
-                      4 años · Macho · Tamaño grande
-                    </p>
-                  </div>
-                </div>
-                <div class="hero-float" style="top: 0.75rem; left: 0.75rem">
-                  <span
-                    class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-brand-700"
-                  >
-                    <i class="fa-solid fa-heart-pulse"></i>
-                  </span>
-                  <div>
-                    <p
-                      class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
-                    >
-                      Compatibilidad
-                    </p>
-                    <p class="text-sm font-black text-slate-900">94% match</p>
-                  </div>
-                </div>
                 <div
-                  class="hero-float"
-                  style="bottom: 1.25rem; right: 0.75rem; animation-delay: 1.2s"
+                  class="hero-photo hero-carousel"
+                  id="hero-carousel"
+                  aria-roledescription="carousel"
+                  aria-label="Mandarino, antes y después de la adopción"
                 >
-                  <span
-                    class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600"
+                  <div
+                    class="hero-slide is-active"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="1 de 2: Mandarino antes del rescate"
                   >
-                    <i class="fa-solid fa-shield-heart"></i>
-                  </span>
-                  <div>
-                    <p
-                      class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                    <img
+                      src="img/mandarino_antes.jpg"
+                      alt="Mandarino antes de ser rescatado, sostenido sobre una manta"
+                      loading="eager"
+                    />
+                    <div class="hero-slide-caption">
+                      <span class="hero-slide-tag hero-slide-tag--before"
+                        >Antes</span
+                      >
+                      <p class="hero-slide-name">Mandarino</p>
+                      <p class="hero-slide-sub">Rescatado en la calle</p>
+                    </div>
+                  </div>
+
+                  <div
+                    class="hero-slide"
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label="2 de 2: Mandarino después de la adopción"
+                  >
+                    <img
+                      src="img/mandarino_despues.jpg"
+                      alt="Mandarino después de ser adoptado, sano y mirando a la cámara"
+                      loading="eager"
+                    />
+                    <div class="hero-slide-caption">
+                      <span class="hero-slide-tag hero-slide-tag--after"
+                        >Después</span
+                      >
+                      <p class="hero-slide-name">Mandarino</p>
+                      <p class="hero-slide-sub">Hoy vive con su familia</p>
+                    </div>
+                  </div>
+
+                  <div class="hero-carousel-nav">
+                    <button
+                      type="button"
+                      class="hero-carousel-btn"
+                      onclick="heroCarouselPrev()"
+                      aria-label="Ver imagen anterior"
                     >
-                      Estado de salud
-                    </p>
-                    <p class="text-sm font-black text-slate-900">Al día</p>
+                      <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <span
+                      id="hero-carousel-counter"
+                      class="hero-carousel-counter"
+                      aria-live="polite"
+                      >1 / 2</span
+                    >
+                    <button
+                      type="button"
+                      class="hero-carousel-btn"
+                      onclick="heroCarouselNext()"
+                      aria-label="Ver imagen siguiente"
+                    >
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                  </div>
+
+                  <div
+                    class="hero-float"
+                    style="bottom: 1.25rem; right: 0.75rem"
+                  >
+                    <span
+                      class="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-50 text-rose-600"
+                    >
+                      <i class="fa-solid fa-heart"></i>
+                    </span>
+                    <div>
+                      <p
+                        class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                      >
+                        Final feliz
+                      </p>
+                      <p class="text-sm font-black text-slate-900">Adoptado</p>
+                    </div>
                   </div>
                 </div>
               </div>

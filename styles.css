@@ -624,6 +624,108 @@ body {
   background: linear-gradient(to top, rgba(2, 6, 23, 0.75), transparent 55%);
 }
 
+/* Carrusel del hero */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+}
+
+.hero-slide-caption {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 3;
+  color: #fff;
+}
+
+.hero-slide-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+}
+
+.hero-slide-tag--before {
+  background: rgba(225, 29, 72, 0.88);
+}
+
+.hero-slide-tag--after {
+  background: rgba(5, 150, 105, 0.92);
+}
+
+.hero-slide-name {
+  margin-top: 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.hero-slide-sub {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hero-carousel-nav {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.22rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(2, 6, 23, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+.hero-carousel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.65rem;
+  transition: background-color 0.16s ease;
+}
+
+.hero-carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.hero-carousel-counter {
+  min-width: 2.3rem;
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .hero-float {
   position: absolute;
   z-index: 2;
