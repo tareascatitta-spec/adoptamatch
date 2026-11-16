@@ -10,8 +10,7 @@ const PETS_DATA = [
     gender: "Macho",
     energy: "Alta",
     housing: "casa_pequena",
-    image:
-      "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=600",
+    image: "img/perros/max.jpg",
     description:
       "Encontrado en un eriazo urbano con serios signos de desnutrición. Tras meses de tratamiento veterinario y cuidados intensivos, recuperó su peso óptimo y demostró un temperamento noble y sumamente leal.",
     health: "Esterilizado, vacunas al día, microchip registrado.",
@@ -84,8 +83,7 @@ const PETS_DATA = [
     gender: "Macho",
     energy: "Alta",
     housing: "casa_pequena",
-    image:
-      "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&q=80&w=600",
+    image: "img/perros/toby.jpg",
     description:
       "Hallado desorientado en la vía pública con lesiones leves de las que se recuperó totalmente. Muestra alta capacidad de aprendizaje y entusiasmo en dinámicas de juego.",
     health: "Vacunado, desparasitado y con chip.",
@@ -158,8 +156,7 @@ const PETS_DATA = [
     gender: "Macho",
     energy: "Media",
     housing: "casa_pequena",
-    image:
-      "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&q=80&w=600",
+    image: "img/perros/bruno.jpg",
     description:
       "Pasó años cuidando un terreno deshabitado bajo desamparo. Tras ser rescatado demostró un carácter extremadamente manso, ideal para entornos familiares pacientes.",
     health: "Esterilizado, perfil sanguíneo perfecto.",
@@ -250,8 +247,7 @@ const PETS_DATA = [
     gender: "Hembra",
     energy: "Media",
     housing: "parcela",
-    image:
-      "https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&q=80&w=600",
+    image: "img/perros/kira.jpg",
     description:
       "Rescatada tras haber sido dejada a su suerte en la periferia rural. Responde excelente al entrenamiento básico de obediencia y demuestra moderación.",
     health: "Esterilizada y microchip insertado.",
@@ -269,8 +265,7 @@ const PETS_DATA = [
     gender: "Macho",
     energy: "Baja",
     housing: "departamento",
-    image:
-      "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80&w=600",
+    image: "img/perros/pepe.jpg",
     description:
       "Encontrado deambulando en ferias libres buscando cobijo. Posee una conducta ejemplar en espacios interiores y es muy paciente con su entorno.",
     health: "Esterilizado, control dental recién realizado.",
@@ -324,8 +319,7 @@ const PETS_DATA = [
     gender: "Hembra",
     energy: "Alta",
     housing: "casa_pequena",
-    image:
-      "https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?auto=format&fit=crop&q=80&w=600",
+    image: "img/perros/chocolatina.jpg",
     description:
       "Encontrada junto a una acequia cuando era solo una lactante. Fue criada en hogar temporal socializando exitosamente con personas y otros animales.",
     health: "Plan de vacunación al día.",
@@ -399,8 +393,7 @@ const PETS_DATA = [
     gender: "Macho",
     energy: "Media",
     housing: "casa_pequena",
-    image:
-      "https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&q=80&w=600",
+    image: "img/perros/tomy.jpg",
     description:
       "Encontrado amarrado en un sitio deshabitado. Mostró ser extremadamente cariñoso desde el primer instante en que fue desatado.",
     health: "Esterilizado, microchip al día.",
@@ -437,8 +430,7 @@ const PETS_DATA = [
     gender: "Macho",
     energy: "Media",
     housing: "casa_pequena",
-    image:
-      "https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&q=80&w=600",
+    image: "img/perros/rocco.jpg",
     description:
       "Vagó varios meses en zonas de mercado municipal. Es un excelente compañero, camina sin tirar de la correa y responde a mandos básicos.",
     health: "Esterilizado, sanitizado completamente.",
@@ -650,22 +642,6 @@ function showToast(title, message) {
 // REAL CASES DATABASE (Mascotas Reales en Busca de Hogar)
 let REAL_CASES_DATA = [
   {
-    id: 101,
-    name: "Canela",
-    type: "perro",
-    urgent: true,
-    location: "Talagante",
-    meta: "Hembra • 1.5 años • Mediana",
-    rescuer: "Agrupación Patitas del Maipo",
-    health: "Esterilizada, chip y vacunas al día",
-    social: "Excelente con niños y otros perros",
-    daysWaiting: 42,
-    image:
-      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=700",
-    story:
-      "Canela fue encontrada desorientada cerca del río Mapocho tras una lluvia intensa. Estuvo en recuperación nutricional durante un mes y hoy está completamente sana. Su hogar temporal vence esta semana y necesita urgente una familia definitiva.",
-  },
-  {
     id: 102,
     name: "Bigotes",
     type: "gato",
@@ -676,74 +652,9 @@ let REAL_CASES_DATA = [
     health: "Castrado, test Retrovirosis negativo",
     social: "Ideal departamento, muy tranquilo",
     daysWaiting: 28,
-    image:
-      "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?auto=format&fit=crop&q=80&w=700",
+    image: "img/gatos/bigotes.jpg",
     story:
       "Rescatado de un techo industrial donde llevaba semanas buscando alimento. Es sumamente dócil, usa su caja sanitaria perfectamente y disfruta dormir cerca de sus tutores.",
-  },
-  {
-    id: 103,
-    name: "Negro",
-    type: "perro",
-    urgent: true,
-    location: "El Monte",
-    meta: "Macho • 3 años • Grande",
-    rescuer: "Red Voluntaria El Monte",
-    health: "Castrado, desparasitado y con microchip",
-    social: "Fiel guardián, ideal casa con patio",
-    daysWaiting: 65,
-    image:
-      "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=700",
-    story:
-      "Negro fue abandonado tras el cierre de una bodega. Es un perro noble, obediente y muy agradecido que busca un hogar con espacio donde sentirse parte de la familia.",
-  },
-  {
-    id: 104,
-    name: "Copito",
-    type: "gato",
-    urgent: true,
-    location: "Isla de Maipo",
-    meta: "Hembra • 7 meses • Pequeña",
-    rescuer: "Rescatista Camila V.",
-    health: "Esterilizada, primeras vacunas listas",
-    social: "Juguetona, convive con gatos",
-    daysWaiting: 19,
-    image:
-      "https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&q=80&w=700",
-    story:
-      "Rescatada junto a su camada en un predio agrícola. Es la única que aún espera familia. Muy cariñosa, ronronea apenas la toman en brazos.",
-  },
-  {
-    id: 105,
-    name: "Tango",
-    type: "perro",
-    urgent: false,
-    location: "Padre Hurtado",
-    meta: "Macho • 10 meses • Mediano",
-    rescuer: "Fundación Huellas Libres",
-    health: "Vacunas completas y castrado",
-    social: "Activo, ideal para caminatas",
-    daysWaiting: 34,
-    image:
-      "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=700",
-    story:
-      "Tango fue rescatado de la carretera siendo cachorro. Tiene mucha energía positiva, aprende trucos básicos con premios y se lleva bien con mascotas equilibradas.",
-  },
-  {
-    id: 106,
-    name: "Pelusa",
-    type: "gato",
-    urgent: false,
-    location: "Talagante",
-    meta: "Hembra • 4 años • Pequeña",
-    rescuer: "Veterinaria Solidaria",
-    health: "Esterilizada, perfil bioquímico sano",
-    social: "Hogar sin perros, ambiente calmado",
-    daysWaiting: 51,
-    image:
-      "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&q=80&w=700",
-    story:
-      "Su antigua tutora falleció y quedó sin familia. Pelusa busca una segunda oportunidad en un hogar tranquilo donde le brinden cariño y estabilidad.",
   },
 ];
 
