@@ -29,8 +29,8 @@ const PETS_DATA = [
     gender: "Hembra",
     energy: "Baja",
     housing: "departamento",
-    image:
-      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=600",
+    image: "img/gatos/luna.jpg",
+    imageFocus: "100% 50%",
     description:
       "Rescatada durante una tormenta de un tejado abandonado junto a sus crías. Cumplió su rol de madre y hoy busca la tranquilidad de un espacio sereno donde dormir al sol.",
     health: "Esterilizada, desparasitada, test FeLV/FIV negativo.",
@@ -66,8 +66,7 @@ const PETS_DATA = [
     gender: "Hembra",
     energy: "Alta",
     housing: "departamento",
-    image:
-      "https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&q=80&w=600",
+    image: "img/gatos/mimi.jpg",
     description:
       "Rescatada con apenas unas semanas de vida en una caja abandonada. Fue criada con biberón por el equipo de acogida, desarrollándose con excelente salud y vitalidad.",
     health: "Primeras vacunas administradas, desparasitación completa.",
@@ -141,8 +140,7 @@ const PETS_DATA = [
     gender: "Hembra",
     energy: "Media",
     housing: "departamento",
-    image:
-      "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=600",
+    image: "img/gatos/chloe.jpg",
     description:
       "Encontrada en un sector industrial donde dependía del alimento esporádico de transeúntes. En su hogar temporal ha demostrado ser metódica, limpia y de costumbres tranquilas.",
     health: "Esterilizada y vacunada.",
@@ -179,8 +177,7 @@ const PETS_DATA = [
     gender: "Hembra",
     energy: "Baja",
     housing: "departamento",
-    image:
-      "https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&q=80&w=600",
+    image: "img/gatos/pelusa.jpg",
     description:
       "Rescatada con severos nudos en su pelaje y deshidratación. Luego de un proceso completo de cuidado estético y nutricional, luce un pelaje impecable y saludable.",
     health: "Esterilizada y desparasitada.",
@@ -216,8 +213,8 @@ const PETS_DATA = [
     gender: "Hembra",
     energy: "Alta",
     housing: "departamento",
-    image:
-      "https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?auto=format&fit=crop&q=80&w=600",
+    image: "img/gatos/nala.jpg",
+    imageFocus: "100% 50%",
     description:
       "Nacida en la calle bajo una estructura abandonada. Rescatada a tiempo junto con su camada, ha crecido sin miedos y muy habituada a la compañía de personas.",
     health: "Vacunas al día segun edad.",
@@ -235,8 +232,7 @@ const PETS_DATA = [
     gender: "Macho",
     energy: "Baja",
     housing: "departamento",
-    image:
-      "https://images.unsplash.com/photo-1513245543132-31f507417b26?auto=format&fit=crop&q=80&w=600",
+    image: "img/gatos/cuchito.jpg",
     description:
       "Sobreviviente a un atropello menor en una avenida concurrida. Recibió atención veterinaria inmediata y descansó en un hogar temporal donde demostró su gran nobleza.",
     health: "Esterilizado, recuperado 100%.",
@@ -310,8 +306,7 @@ const PETS_DATA = [
     gender: "Macho",
     energy: "Media",
     housing: "departamento",
-    image:
-      "https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&q=80&w=600",
+    image: "img/gatos/felix.jpg",
     description:
       "Rescatado en un callejón con infección ocular aguda que se trató satisfactoriamente sin perder la visión. Es extremadamente afectuoso y limpio.",
     health: "Esterilizado, sanado completamente.",
@@ -1402,6 +1397,8 @@ function openPetModal(petId) {
   if (!pet) return;
 
   document.getElementById("modal-pet-img").src = pet.image;
+  document.getElementById("modal-pet-img").style.objectPosition =
+    pet.imageFocus || "center";
   document.getElementById("modal-pet-badge").textContent =
     pet.type === "perro" ? "Perro Rescatado" : "Gato Rescatado";
   document.getElementById("modal-pet-name-title").textContent = pet.name;
